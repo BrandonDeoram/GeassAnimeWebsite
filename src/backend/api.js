@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: "https://api.jikan.moe/v4/"
+  baseURL: "http://localhost:5000/"
 })
-export const getAnimeData = async () => {
+export const getTopAnimes = async () => {
   try {
-    const response = await api.get("/top/anime");
+    const response = await api.get("/topAnimes");
+    console.log(response.data);
     return response.data
   } catch (error) {
     console.error(error);
