@@ -1,21 +1,14 @@
-import './App.css';
-import React, { useState, useEffect } from 'react';
-import { getTopAnimes } from './backend/api';
+import React from 'react';
+import CarouselComp from './Components/Carousels/CarouselComp';
+import NavBar from './Components/NavBar/NavBar';
 function App() {
-  const [topAnime, setTopAnime] = useState([]);
-
-  useEffect(() => {
-    getTopAnimes().then((res) => setTopAnime(res.data));
-  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        {topAnime.map((anime, id) => {
-          return <li key={id}>{anime.title}</li>
-        })}
-
-      </header>
+      <NavBar></NavBar>
+      <CarouselComp>
+      </CarouselComp>
     </div>
+
   );
 }
 

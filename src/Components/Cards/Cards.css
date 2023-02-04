@@ -1,0 +1,32 @@
+.card {
+    margin: 0px 0px 0px 0px !important;
+    display: flex;
+    flex: 1;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 80px -25px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s;
+}
+
+img {
+    display: flex;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.container2 {
+    background-color: cadetblue;
+    position: absolute;
+    /* height: 50px; */
+    z-index: 2;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    top: 60%;
+    /* right: 80%; */
+    margin-left: 10% !important;
+}
