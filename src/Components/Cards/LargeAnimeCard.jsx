@@ -8,7 +8,7 @@ export default function LargeAnimeCard() {
             <div className="card">
                 <img src='https://cdn.myanimelist.net/images/anime/1170/124312.jpg' />
                 <div className="container2" >
-                    hello
+                    Attack on Titan
                 </div>
             </div>
         </SplideSlide>
