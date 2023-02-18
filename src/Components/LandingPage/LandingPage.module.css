@@ -1,0 +1,33 @@
+.container {
+    margin: 20px;
+    /* width: 100% !important; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-Items: center;
+}
+
+.geassImage {
+    margin: auto;
+    width: 40%;
+    max-width: 200px;
+    filter: invert(97%) sepia(40%) saturate(2%) hue-rotate(258deg) brightness(114%) contrast(100%);
+}
+
+.linkContainer {
+    width: 100% !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-Items: center;
+}
+
+.link {
+    color: var(--iconColorPink);
+    margin: 10px;
+    text-decoration: none;
+
+}
+.link:hover{
+    color: white;
+}
