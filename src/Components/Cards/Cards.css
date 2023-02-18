@@ -25,9 +25,9 @@ img {
     position: absolute;
     /* height: 50px; */
     z-index: 2;
-    display: flex;
-    justify-content: start;
-    align-items: start;
+    display: flex-start;
+    /* justify-content: start; */
+    /* align-items: start; */
     top: 60%;
     max-width: 80%;
     /* right: 80%; */

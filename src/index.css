@@ -10,8 +10,15 @@ body {
   overflow: hidden
 }
 
+:root {
+  --backgroundGrey: #131213;
+  --bigHeaderColorPink: #eedaea;
+  --iconColorPink: #f494e3;
+
+}
+
 .App {
-  background-color: grey;
+  background-color: var(--backgroundGrey);
   flex-direction: column;
   height: 100vh;
   width: 100%;
@@ -29,6 +36,3 @@ code {
   margin: 0;
   padding: 0;
 }
-
-
-
