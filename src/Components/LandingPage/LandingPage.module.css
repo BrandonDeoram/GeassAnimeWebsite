@@ -12,6 +12,19 @@
     width: 40%;
     max-width: 200px;
     filter: invert(97%) sepia(40%) saturate(2%) hue-rotate(258deg) brightness(114%) contrast(100%);
+    z-index: 2;
+}
+
+.searchBackground {
+    font-size: 100px;
+    color: var(--backgroundGrey);
+    outline-color: white;
+    -webkit-text-stroke-width: .28px;
+    -webkit-text-stroke-color: white;
+    /* z-index: 1;
+    right: 60%;
+    top:10%;
+    position: absolute; */
 }
 
 .linkContainer {
@@ -28,6 +41,7 @@
     text-decoration: none;
 
 }
-.link:hover{
+
+.link:hover {
     color: white;
 }
