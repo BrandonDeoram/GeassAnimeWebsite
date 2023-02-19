@@ -27,6 +27,38 @@
     position: absolute; */
 }
 
+.searchContainer{
+    display: flex;
+    flex-direction: row;
+}
+.searchContent{
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+
+}
+.searchInput{
+    height: 50px;
+    width: 100%;
+    font-weight: 400;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+    border: none !important;
+}
+.button{
+    width: 50px;
+    background-color: transparent !important;
+    color: white !important;
+    border: none;
+    margin-left: 10px;
+}
+.searchButton{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
 .linkContainer {
     width: 100% !important;
     display: flex;
