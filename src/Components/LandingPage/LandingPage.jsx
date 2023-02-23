@@ -1,13 +1,24 @@
 import React, { useState } from 'react'
 import styles from "../LandingPage/LandingPage.module.css"
 import SearchBar from './SearchBar';
-
+import { getSearchAnime } from '../../backend/api';
 export default function LandingPage() {
     const [searchResults, setSearchResults] = useState([]);
 
     const handleSearch = (searchTerm) => {
         // Perform search logic here and update searchResults state
-        setSearchResults([...new Array(10)].map((_, index) => `Result ${index + 1}`));
+        console.log(searchTerm);
+        // const animeName = 'your_anime_name';
+        // const apiUrl = `https://api.jikan.moe/v4/anime?q=${searchTerm}&page=1`;
+        // fetch(apiUrl)
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         // handle the response data
+        //         console.log(data.data); // display the first result
+        //     })
+        //     .catch(error => console.error(error));
+        getSearchAnime(searchTerm).then((res) => console.log(res));
+        // setSearchResults([...new Array(10)].map((_, index) => `Result ${index + 1}`));
     };
     return (
         <div className={styles.container}>
