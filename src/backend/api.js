@@ -20,7 +20,8 @@ export const getTopAnimes = async () => {
 export const getSearchAnime = async (animeName) => {
   try {
     const response = await jikanApi.get(`anime?q=${animeName}&page=1`);
-    return response.data.data
+    // console.log(response.data.data)
+    return response.data
   } catch (error) {
     console.error(error);
     return error;

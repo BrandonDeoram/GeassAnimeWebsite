@@ -1,25 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from "../LandingPage/LandingPage.module.css"
 import SearchBar from './SearchBar';
 import { getSearchAnime } from '../../backend/api';
 export default function LandingPage() {
     const [searchResults, setSearchResults] = useState([]);
+    const [idk, setIdk] = useState([]);
+
 
     const handleSearch = (searchTerm) => {
         // Perform search logic here and update searchResults state
         console.log(searchTerm);
-        // const animeName = 'your_anime_name';
-        // const apiUrl = `https://api.jikan.moe/v4/anime?q=${searchTerm}&page=1`;
-        // fetch(apiUrl)
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         // handle the response data
-        //         console.log(data.data); // display the first result
-        //     })
-        //     .catch(error => console.error(error));
-        getSearchAnime(searchTerm).then((res) => console.log(res));
+        getSearchAnime(searchTerm).then((res) => setSearchResults(res.data));
         // setSearchResults([...new Array(10)].map((_, index) => `Result ${index + 1}`));
+
     };
+    useEffect(() => {
+        console.log(idk.map(item => item['mal_id']));
+
+
+    }, [idk]);
     return (
         <div className={styles.container}>
             <img src="http://www.clker.com/cliparts/C/8/5/F/s/V/geass-kr-md.png" alt="no pic" className={styles.geassImage} />
@@ -44,8 +43,14 @@ export default function LandingPage() {
             <div className={styles.searchContent}>
                 <SearchBar onSearch={handleSearch} />
                 <ul>
-                    {searchResults.map((result) => (
-                        <li>{result}</li>
+                    {searchResults.map((anime) => (
+                        <div key={anime.mal_id}>
+                            <img src={anime['images']['jpg']['image_url']} />
+                            <div  >
+                                {anime['title']}
+                            </div>
+                        </div>
+                        // <li key={result.mal_id} id={result.mal_id}>{result.title}</li>
                     ))}
                 </ul>
             </div>
