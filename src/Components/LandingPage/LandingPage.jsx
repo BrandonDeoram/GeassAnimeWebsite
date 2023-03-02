@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import styles from "../LandingPage/LandingPage.module.css"
 import SearchBar from './SearchBar';
 import { getSearchAnime } from '../../backend/api';
+import SearchCards from './SearchCards';
 export default function LandingPage() {
-    const [searchResults, setSearchResults] = useState([]);
+
+    const [search, setSearchResults] = useState([]);
     const [idk, setIdk] = useState([]);
 
 
@@ -11,6 +13,7 @@ export default function LandingPage() {
         // Perform search logic here and update searchResults state
         console.log(searchTerm);
         getSearchAnime(searchTerm).then((res) => setSearchResults(res.data));
+        console.log(search);
         // setSearchResults([...new Array(10)].map((_, index) => `Result ${index + 1}`));
 
     };
@@ -42,18 +45,8 @@ export default function LandingPage() {
 
             <div className={styles.searchContent}>
                 <SearchBar onSearch={handleSearch} />
-                <ul>
-                    {searchResults.map((anime) => (
-                        <div key={anime.mal_id}>
-                            <img src={anime['images']['jpg']['image_url']} />
-                            <div  >
-                                {anime['title']}
-                            </div>
-                        </div>
-                        // <li key={result.mal_id} id={result.mal_id}>{result.title}</li>
-                    ))}
-                </ul>
             </div>
+            <SearchCards searchResults={search}></SearchCards>
         </div>
     )
 }
