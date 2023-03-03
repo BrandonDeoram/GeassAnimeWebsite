@@ -9,7 +9,7 @@ body {
   padding: 0;
   overflow-x: hidden;
   overflow-y: hidden;
-  color: #717bff;
+  color: white;
 }
 
 * {
@@ -42,7 +42,7 @@ body {
   --backgroundGrey: #131213;
   --bigHeaderColorPink: #eedaea;
   --iconColorPink: #f494e3;
-  --primaryColor:#717bff;
+
 
 }
 

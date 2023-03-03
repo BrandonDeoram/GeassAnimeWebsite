@@ -1,0 +1,39 @@
+.container {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(59, 58, 58, 0.226);
+    padding: 16px;
+
+}
+
+.welcomeText {
+    color: var(--bigHeaderColorPink);
+    font-size: 1.2vw;
+    justify-content: center;
+    align-self: center;
+}
+
+.rowType {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 1200px) {
+    .welcomeText {
+        font-size: 1.5vw;
+    }
+}
+
+@media only screen and (max-width: 442px) {
+    .welcomeText {
+        display: none;
+    }
+
+    .container {
+        display: none;
+    }
+}

@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import styles from "../LandingPage/LandingPage.module.css"
-import IconButton from '@mui/material/IconButton';
+import styles from "../LandingPage/LandingPage.module.css";
+import { getSearchAnime } from '../../backend/api';
 import { AiOutlineSearch } from "react-icons/ai";
-function SearchBar(props) {
+import SearchCards from './SearchCards';
+import Welcome from './Welcome';
+function SearchBar() {
     const [searchTerm, setSearchTerm] = useState('');
+    const [search, setSearchResults] = useState([]);
+    const [clicked, setClicked] = useState(false);
 
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
@@ -11,23 +15,29 @@ function SearchBar(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        props.onSearch(searchTerm);
+        handleSearch(searchTerm);
+        setClicked(true);
     };
 
-    return (
-        <form onSubmit={handleSubmit} className={styles.searchContainer}>
-            <input
-                type="text"
-                placeholder="Search..."
-                value={searchTerm}
-                onChange={handleInputChange}
-                className={styles.searchInput}
-            />
-           
-            {/* <IconButton onSubmit={handleSubmit} className={styles.button} aria-label="search"></IconButton> */}
-            <button type="submit" className={styles.button}> <AiOutlineSearch className={styles.searchButton}></AiOutlineSearch></button>
+    const handleSearch = (searchTerm) => {
+        getSearchAnime(searchTerm).then((res) => setSearchResults(res.data));
+    };
 
-        </form>
+
+    return (
+        <>
+            <form onSubmit={handleSubmit} className={styles.searchContainer}>
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchTerm}
+                    onChange={handleInputChange}
+                    className={styles.searchInput}
+                />
+                <button type="submit" className={styles.button}> <AiOutlineSearch className={styles.searchButton}></AiOutlineSearch></button>
+            </form>
+            {clicked ? <SearchCards searchResults={search}></SearchCards> : <Welcome></Welcome>}
+        </>
     );
 }
 
