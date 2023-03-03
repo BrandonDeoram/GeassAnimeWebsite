@@ -40,10 +40,11 @@
 }
 
 .searchInput {
+    /* background-color: rgb(88, 88, 88); */
     height: 50px;
     width: 100%;
     font-weight: 400;
-    border-radius: 20px;
+    border-radius: 6px;
     padding-left: 20px;
     padding-right: 20px;
     font-size: 16px;
@@ -65,6 +66,7 @@
 }
 
 .linkContainer {
+    margin: 10px;
     width: 100% !important;
     display: flex;
     flex-direction: row;
@@ -73,7 +75,11 @@
 }
 
 .link {
-    color: var(--iconColorPink);
+    /* background: linear-gradient(to bottom, transparent 0%, black 100%); */
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #282828;
+    color: var(--bigHeaderColorPink);
     margin: 10px;
     text-decoration: none;
 
@@ -86,13 +92,30 @@
 .searchResContainer {
     padding: 16px;
     margin-top: 16px;
+    margin-bottom: 20rem;
     width: 80%;
     height: 500px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     grid-gap: 40px;
-    overflow-y: visible;
+    overflow-y: auto;
     overflow-x: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+    .searchResContainer {
+        background-color: red;
+        padding: 16px;
+        margin-top: 16px;
+        margin-bottom: 20rem;
+        width: 90%;
+        height: 500px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+        grid-gap: 20px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
 }
 
 .card {
@@ -106,7 +129,7 @@
 }
 
 .card:hover {
-    transform: scale(1.02);
+    transform: scale(1.1);
     box-shadow: 0px 0px 80px -25px rgba(0, 0, 0, 0.5);
     transition: all 0.4s;
 }
@@ -118,13 +141,16 @@
 }
 
 .title {
+    color: var(--bigHeaderColorPink);
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 10px;
+    padding: 30px 0px;
     text-align: center;
-    font-size: 15px;
+    /* font-size: 16px; */
+    letter-spacing: 1px;
+    width: 100%;
     background: linear-gradient(to bottom, transparent 0%, black 100%);
     z-index: 0;
 }

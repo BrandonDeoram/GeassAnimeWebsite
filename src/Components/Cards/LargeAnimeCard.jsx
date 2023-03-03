@@ -11,6 +11,7 @@ export default function LargeAnimeCard() {
                 <div className={styles.container} >
                     Attack on Titan
                 </div>
+                
             </div>
         </SplideSlide>
 

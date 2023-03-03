@@ -20,16 +20,17 @@ img {
 }
 
 .container2 {
-    font-size: 15px;
-    background-color: cadetblue;
+    color: var(--bigHeaderColorPink);
+    letter-spacing: 1px;
+
     position: absolute;
-    /* height: 50px; */
-    z-index: 2;
-    display: flex-start;
-    /* justify-content: start; */
-    /* align-items: start; */
-    top: 60%;
-    max-width: 80%;
-    /* right: 80%; */
-    margin-left: 10% !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px 0px;
+    text-align: center;
+    font-size: 15px;
+    width: 100%;
+    background: linear-gradient(to bottom, transparent 0%, black 100%);
+    z-index: 0;
 }
