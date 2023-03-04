@@ -1,0 +1,30 @@
+.container {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(59, 58, 58, 0.226);
+    padding: 16px;
+    position: relative; /* set position to relative */
+}
+
+.title {
+    font-size: 32px;
+    padding-left: 30px;
+    z-index: 200;
+    color: var(--bigHeaderColorPink);
+}
+
+.backTitle {
+    padding-left: 16px;
+    position: absolute; /* set position to absolute */
+    left: 0;
+    top: 0;
+    opacity: 10%;
+    color: transparent;
+    -webkit-text-stroke: .1px white;
+    -moz-text-stroke: .1px white;
+    -ms-text-stroke: .1px white;
+    font-size: 90px;
+    margin: 0;
+}

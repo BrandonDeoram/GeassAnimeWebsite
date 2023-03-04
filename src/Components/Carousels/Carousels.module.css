@@ -3,4 +3,5 @@
     visibility: visible !important;
     /* width: 100% !important; */
     margin:30px;
+    z-index: 5;
 }

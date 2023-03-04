@@ -3,6 +3,8 @@ import { getTopAnimes } from './backend/api';
 import CarouselComp from './Components/Carousels/CarouselComp';
 import NavBar from './Components/NavBar/NavBar';
 import LandingPage from './Components/LandingPage/LandingPage';
+import WrapCarousel from './Components/Wrappers/WrapCarousel';
+import TitleWCarousel from './Components/TitleWCarousel/TitleWCarousel';
 function App() {
   //Make API calls and populate carousel with the animelist 
   const [topAnime, setTopAnime] = useState([]);
@@ -16,7 +18,13 @@ function App() {
       <div id="content">
         <NavBar></NavBar>
         <LandingPage></LandingPage>
-        <CarouselComp props={topAnime} />
+        <WrapCarousel>
+          <TitleWCarousel title={"Novelty"} animes={topAnime}></TitleWCarousel>
+          <TitleWCarousel title={"Novelty"} animes={topAnime}></TitleWCarousel>
+
+        </WrapCarousel>
+
+        {/* <CarouselComp props={topAnime} /> */}
       </div>
 
     </div>
