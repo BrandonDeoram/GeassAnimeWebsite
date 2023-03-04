@@ -36,6 +36,7 @@
     align-items: center;
     justify-content: center;
     width: 80%;
+    height: auto;
 
 }
 
@@ -92,7 +93,7 @@
 .searchResContainer {
     padding-right: 16px;
     margin-top: 16px;
-    margin-bottom: 20rem;
+    margin-bottom: 10rem;
     width: 95%;
     height: 500px;
     display: grid;

@@ -20,8 +20,7 @@ function App() {
         <LandingPage></LandingPage>
         <WrapCarousel>
           <TitleWCarousel title={"Novelty"} animes={topAnime}></TitleWCarousel>
-          <TitleWCarousel title={"Novelty"} animes={topAnime}></TitleWCarousel>
-
+          <TitleWCarousel title={"Shounen"} animes={topAnime}></TitleWCarousel>
         </WrapCarousel>
 
         {/* <CarouselComp props={topAnime} /> */}
