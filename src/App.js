@@ -11,12 +11,16 @@ function App() {
   const [topAnime, setTopAnime] = useState([]);
   const [actionAnime, setActionAnime] = useState([]);
   const [adventureAnime, setAdventureAnime] = useState([]);
+  const [advantAnime, setAdvantAnime] = useState([]);
+
 
 
 
   useEffect(() => {
     getTopAnimes().then((res) => setTopAnime(res.data));
-    getGenre(1).then((res) => setActionAnime(res.data)).then(() => getGenre(2).then((res) => setAdventureAnime(res.data)));
+    getGenre(1).then((res) => setActionAnime(res.data)).then(() => getGenre(2).then((res) => setAdventureAnime(res.data))).then(() => getGenre(5).then((res) => setAdvantAnime(res.data)));
+
+
 
 }, [])
 return (
@@ -28,6 +32,8 @@ return (
         <TitleWCarousel title={"Top"} animes={topAnime}></TitleWCarousel>
         <TitleWCarousel title={"Action"} animes={actionAnime}></TitleWCarousel>
         <TitleWCarousel title={"Adventure"} animes={adventureAnime}></TitleWCarousel>
+        <TitleWCarousel title={"Advant Garde"} animes={advantAnime}></TitleWCarousel>
+
 
       </WrapCarousel>
 
