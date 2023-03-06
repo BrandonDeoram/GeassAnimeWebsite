@@ -8,6 +8,8 @@ const jikanApi = axios.create({
   baseURL: "https://api.jikan.moe/v4/"
 });
 
+
+
 export const getTopAnimes = async () => {
   try {
     const response = await api.get("topAnimes");
@@ -18,16 +20,20 @@ export const getTopAnimes = async () => {
     return error;
   }
 };
-export const getActionAnimes = async () => {
-  try {
-    const response = await jikanApi.get('anime?genres=1');
-    return response.data
-  } catch (error) {
-    console.error(error);
-    return error;
-  }
-
+export const getGenre = async (id) => {
+  return new Promise(resolve => {
+    setTimeout(async () => {
+      try {
+        const response = await jikanApi.get(`anime?genres=${id}`);
+        resolve(response.data);
+      } catch (error) {
+        console.error(error);
+        resolve(error);
+      }
+    }, 2000);
+  });
 }
+
 export const getSearchAnime = async (animeName) => {
   try {
     const response = await jikanApi.get(`anime?q=${animeName}&page=1`);
