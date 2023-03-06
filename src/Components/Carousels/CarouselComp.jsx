@@ -39,20 +39,19 @@ export default function CarouselComp({ props }) {
         }} >
 
             {animes.map((anime, id) => {
-                return <SplideSlide key={id} >
-                    <div className="card">
-                        <img src={anime['images']['jpg']['image_url']} />
-                        <div className="container2" >
-                            {anime['title']}
+                return <SplideSlide key={id}>
+                    <a href={`/anime/${anime.mal_id}`}>
+                        <div className="card">
+                            <img src={anime['images']['jpg']['image_url']} />
+                            <div className="container2" >
+                                {anime['title']}
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </SplideSlide>
+
             })}
 
         </Splide>
     );
 }
-
-// {topAnime.map((anime, id) => {
-//   return <li key={id}>{anime.title}</li>
-// })}
