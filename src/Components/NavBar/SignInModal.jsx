@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import style from "./NavBar.module.css";
+import Modal from 'react-modal';
 
-const SignInModal = ({ onClose }) => {
+const SignInModal = () => {
+    const [modalIsOpen, setModalIsOpen] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
         // handle form submission
-        onClose();
     }
 
     return (
-        <div className={style.modal}>
-            <div className={style.modalContent}>
+        <>
+            <button onClick={() => setModalIsOpen(true)}>Sign In</button>
+            <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} ariaHideApp={false}>
                 <h2>Sign In</h2>
                 <form onSubmit={handleSubmit}>
                     <label>
@@ -26,31 +27,9 @@ const SignInModal = ({ onClose }) => {
                     </label>
                     <button type="submit">Submit</button>
                 </form>
-                <button onClick={onClose}>Close</button>
-            </div>
-        </div>
-    );
-}
-
-export default function NavBar() {
-    const [showModal, setShowModal] = useState(false);
-
-    const handleSignInClick = () => {
-        setShowModal(true);
-    }
-
-    const handleCloseModal = () => {
-        setShowModal(false);
-    }
-
-    return (
-        <>
-            <ul className={style.ul}>
-                <li className={style.li}>
-                    <a className={style.signIn} onClick={handleSignInClick}>Sign In</a>
-                </li>
-            </ul>
-            {showModal && <SignInModal onClose={handleCloseModal} />}
+            </Modal>
         </>
     );
-}
+};
+
+export default SignInModal;
