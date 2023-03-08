@@ -51,7 +51,6 @@
     justify-content: center;
     align-items: center;
     text-transform: none;
-   
     transition: all .2s, box-shadow .08s ease-in;
     user-select: none;
     -webkit-user-select: none;
@@ -116,24 +115,7 @@
     border: 1px solid #ccc;
 }
 
-.modalContent button[type="submit"] {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-}
 
-.modalContent button[type="submit"]:hover {
-    background-color: #0069d9;
-}
-
-.modalContent button[type="submit"]:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
 
 .modalContent button[type="button"] {
     margin-top: 1rem;
