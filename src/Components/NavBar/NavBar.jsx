@@ -10,6 +10,7 @@ const SignInModal = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // handle form submission
+    console.log(username, password);
     onClose();
   };
 

@@ -4,6 +4,9 @@ import styles from "./Carousels.module.css";
 import LargeAnimeCard from '../Cards/LargeAnimeCard';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from "@material-ui/icons/Delete";
+import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
 
 //Takes an AnimeList and turns it into a card 
 export default function CarouselComp({ props }) {
@@ -40,14 +43,27 @@ export default function CarouselComp({ props }) {
 
             {animes.map((anime, id) => {
                 return <SplideSlide key={id}>
-                    <a href={`/anime/${anime.mal_id}`}>
-                        <div className="card">
+
+                    <div className="card">
+                        <a href={`/anime/${anime.mal_id}`}>
                             <img src={anime['images']['jpg']['image_url']} />
+
                             <div className="container2" >
                                 {anime['title']}
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                        <IconButton aria-label="delete" sx={{
+                            width: 50,
+                            color: 'white',
+                            zIndex: 200,
+                            position: 'absolute',
+                            right: '0%',
+                        }}>
+                            <LibraryAddIcon />
+                        </IconButton>
+                    </div>
+
+
                 </SplideSlide>
 
             })}
