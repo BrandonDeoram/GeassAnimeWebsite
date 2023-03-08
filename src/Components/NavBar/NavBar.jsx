@@ -47,7 +47,7 @@ export default function NavBar() {
         <>
             <ul className={style.ul}>
                 <li className={style.li}>
-                    <a className={style.signIn} onClick={handleSignInClick}>Sign In</a>
+                    <button className={style.signIn}  onClick={handleSignInClick}>Sign In</button>
                 </li>
             </ul>
             {showModal && <SignInModal onClose={handleCloseModal} />}
