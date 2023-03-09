@@ -5,12 +5,15 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import IconButton from "@mui/material/IconButton";
 import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
+import { useDispatch, useSelector } from "react-redux";
+import { addAnime } from "../../redux/planToWatch";
 
 //Takes an AnimeList and turns it into a card
 export default function CarouselComp({ props }) {
   let animes = props;
-  // anime['images']['jpg']['image_url']
-  /* {anime['title']} */
+
+  const { value } = useSelector((state) => state.planToWatch);
+  const dispatch = useDispatch();
   return (
     <Splide
       aria-label="My Favorite Images"
@@ -47,7 +50,10 @@ export default function CarouselComp({ props }) {
           <SplideSlide key={id}>
             <div className="card">
               <a href={`/anime/${anime.mal_id}`}>
-                <img src={anime["images"]["jpg"]["image_url"]} alt={"loading"}/>
+                <img
+                  src={anime["images"]["jpg"]["image_url"]}
+                  alt={"loading"}
+                />
                 <div className="container2">{anime["title"]}</div>
               </a>
               <IconButton
@@ -60,7 +66,9 @@ export default function CarouselComp({ props }) {
                   right: "0%",
                 }}
                 onClick={() => {
-                    console.log(anime.mal_id);
+                  dispatch(addAnime(anime));
+                  console.log(value);
+                  console.log(anime.mal_id);
                 }}
               >
                 <LibraryAddIcon />
