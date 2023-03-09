@@ -18,7 +18,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^6.9.0",
+    "mongoose": "^6.10.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-horizontal-scroll-grid": "^0.1.4",

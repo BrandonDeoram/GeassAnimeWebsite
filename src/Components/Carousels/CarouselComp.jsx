@@ -66,8 +66,6 @@ export default function CarouselComp({ props }) {
                   right: "0%",
                 }}
                 onClick={() => {
-                  dispatch(addAnime(anime));
-                  console.log(value);
                   console.log(anime.mal_id);
                 }}
               >
