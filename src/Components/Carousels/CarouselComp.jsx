@@ -5,15 +5,12 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import IconButton from "@mui/material/IconButton";
 import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
-import { useDispatch, useSelector } from "react-redux";
-import { addAnime } from "../../redux/planToWatch";
+import { sendAnime } from "../../backend/api";
 
 //Takes an AnimeList and turns it into a card
 export default function CarouselComp({ props }) {
   let animes = props;
 
-  const { value } = useSelector((state) => state.planToWatch);
-  const dispatch = useDispatch();
   return (
     <Splide
       aria-label="My Favorite Images"
@@ -67,6 +64,7 @@ export default function CarouselComp({ props }) {
                 }}
                 onClick={() => {
                   console.log(anime.mal_id);
+                  sendAnime(anime);
                 }}
               >
                 <LibraryAddIcon />
