@@ -25,7 +25,6 @@ app.get("/", function (req, res) {
 
 app.post("/anime", async (req, res) => {
   const doc = req.body;
-  //   const { title, imageURL, description, episodes, rating } = req.body;
   db.collection("WatchList")
     .insertOne({
       doc,
@@ -39,7 +38,6 @@ app.post("/anime", async (req, res) => {
 });
 
 app.get("/topAnimes", async (req, res) => {
-  // console.log("CALLED TOP ANIME");
   try {
     const response = await api.get("top/anime");
     res.send(response.data);

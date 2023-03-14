@@ -30,6 +30,8 @@ const SignInModal = ({ onClose }) => {
     setIsRegistering(!isRegistering);
   }
 
+  
+
   const formTitle = isRegistering ? 'Register' : 'Sign In';
   const submitButtonText = isRegistering ? 'Register' : 'Sign In';
   const toggleButtonText = isRegistering ? 'Already have an account? Sign In' : 'Don\'t have an account? Register';
@@ -74,6 +76,7 @@ export default function NavBar() {
       <ul className={style.ul}>
         <li className={style.li}>
           <button className={style.signIn} onClick={handleSignInClick}>Sign In</button>
+          <button className={style.watchListButton} >Get MongoList</button>
         </li>
       </ul>
       {showModal && <SignInModal onClose={handleCloseModal} />}
