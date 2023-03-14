@@ -6,6 +6,7 @@ import "@splidejs/react-splide/css";
 import IconButton from "@mui/material/IconButton";
 import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
 import { sendAnime } from "../../backend/api";
+import cardStyles from "../Cards/Cards.module.css";
 
 //Takes an AnimeList and turns it into a card
 export default function CarouselComp({ props }) {
@@ -45,13 +46,13 @@ export default function CarouselComp({ props }) {
       {animes.map((anime, id) => {
         return (
           <SplideSlide key={id}>
-            <div className="card">
+            <div className={cardStyles.card}>
               <a href={`/anime/${anime.mal_id}`}>
                 <img
                   src={anime["images"]["jpg"]["image_url"]}
                   alt={"loading"}
                 />
-                <div className="container2">{anime["title"]}</div>
+                <div className={cardStyles.title}>{anime["title"]}</div>
               </a>
               <IconButton
                 aria-label="delete"

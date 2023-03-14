@@ -1,8 +1,8 @@
 import React from 'react';
-import "./Cards.css";
+import "./Cards.module.css";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
-import styles from "../Cards/Cards.css"
+import styles from "../Cards/Cards.module.css"
 export default function LargeAnimeCard() {
     return (
         <SplideSlide>

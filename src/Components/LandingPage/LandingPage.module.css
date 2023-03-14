@@ -91,6 +91,7 @@
 }
 
 .searchResContainer {
+    position: relative;
     padding-right: 16px;
     margin-top: 16px;
     margin-bottom: 10rem;

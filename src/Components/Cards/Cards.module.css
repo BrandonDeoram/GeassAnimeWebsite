@@ -1,0 +1,37 @@
+.card {
+  margin: 0px 0px 0px 0px !important;
+  display: flex;
+  border-radius: 5px;
+  height: 100%;
+  position: relative;
+}
+
+.card a {
+  display: block;
+  position: relative;
+}
+
+.card img {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+
+.title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: linear-gradient(to bottom, transparent 0%, black 100%);
+  color: var(--bigHeaderColorPink);
+  font-size: 15px;
+  text-align: center;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 0px 80px -25px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s;
+  opacity: 0.7;
+}
