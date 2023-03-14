@@ -23,6 +23,7 @@ app.get("/", function (req, res) {
   res.send("Hello World!");
 });
 
+//MongoDB Stuff
 app.post("/anime", async (req, res) => {
   const doc = req.body;
   db.collection("WatchList")
@@ -34,6 +35,18 @@ app.post("/anime", async (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ err: "Couldnt create new doc" });
+    });
+});
+
+app.get("/watchList", async (req, res) => {
+  db.collection("WatchList")
+    .find({})
+    .toArray((err, docs) => {
+      if (err) throw err;
+      let malIds = docs.map((doc) => doc["doc"]["mal_id"]);
+      res.send(malIds);
+      // console.log(docs[0]["doc"]);
+      db.close();
     });
 });
 
