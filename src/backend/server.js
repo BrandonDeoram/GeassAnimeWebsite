@@ -24,19 +24,11 @@ app.get("/", function (req, res) {
 });
 
 app.post("/anime", async (req, res) => {
-  console.log("hello");
-  console.log(req.body);
-  const { title, images, description, episodes, rating } = req.body;
-  console.log("LOG THIS");
-  console.log("THIS IMAGE", images);
+  const doc = req.body;
   //   const { title, imageURL, description, episodes, rating } = req.body;
   db.collection("WatchList")
     .insertOne({
-      title,
-      images,
-      description,
-      episodes,
-      rating,
+      doc,
     })
     .then((result) => {
       console.log(res.status(201).json(result));
