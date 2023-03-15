@@ -1,7 +1,13 @@
 .carouselContainer {
-    /* max-width: 100% !important; */
-    visibility: visible !important;
-    /* width: 100% !important; */
-    margin: 30px;
-    z-index: 5;
+  /* max-width: 100% !important; */
+  visibility: visible !important;
+  /* width: 100% !important; */
+  margin: 30px;
+  z-index: 5;
+}
+
+@media screen and (max-width: 600px) {
+  .carouselContainer {
+    margin: 5px;
+  }
 }
