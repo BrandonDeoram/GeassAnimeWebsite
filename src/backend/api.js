@@ -18,6 +18,7 @@ export const getTopAnimes = async () => {
     return error;
   }
 };
+//MonogDB Stuff
 export const sendAnime = async (anime) => {
   console.log("SEND ANIME");
   try {
@@ -39,7 +40,7 @@ export const getGenre = async (id) => {
         console.error(error);
         resolve(error);
       }
-    }, 2000);
+    }, 3000);
   });
 };
 

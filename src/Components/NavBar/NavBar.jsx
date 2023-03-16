@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import style from "./NavBar.module.css";
-
+import { useNavigate } from "react-router-dom";
 const SignInModal = ({ onClose }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
   const modalRef = useRef(null);
 
@@ -20,21 +20,21 @@ const SignInModal = ({ onClose }) => {
         onClose();
       }
     };
-    window.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener("mousedown", handleClickOutside);
     return () => {
-      window.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener("mousedown", handleClickOutside);
     };
   }, [onClose]);
 
   const handleToggleRegister = () => {
     setIsRegistering(!isRegistering);
-  }
+  };
 
-  
-
-  const formTitle = isRegistering ? 'Register' : 'Sign In';
-  const submitButtonText = isRegistering ? 'Register' : 'Sign In';
-  const toggleButtonText = isRegistering ? 'Already have an account? Sign In' : 'Don\'t have an account? Register';
+  const formTitle = isRegistering ? "Register" : "Sign In";
+  const submitButtonText = isRegistering ? "Register" : "Sign In";
+  const toggleButtonText = isRegistering
+    ? "Already have an account? Sign In"
+    : "Don't have an account? Register";
 
   return (
     <div className={style.modal}>
@@ -43,14 +43,24 @@ const SignInModal = ({ onClose }) => {
         <form onSubmit={handleSubmit}>
           <label>
             Email:
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </label>
           <label>
             Password:
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </label>
           <div>
-            <button type="submit" className={style.signIn}>{submitButtonText}</button>
+            <button type="submit" className={style.signIn}>
+              {submitButtonText}
+            </button>
           </div>
         </form>
         {/* <button onClick={handleCloseModal}>Close</button> */}
@@ -58,25 +68,32 @@ const SignInModal = ({ onClose }) => {
       </div>
     </div>
   );
-}
+};
 
 export default function NavBar() {
   const [showModal, setShowModal] = useState(false);
-
+  const navigate = useNavigate();
   const handleSignInClick = () => {
     setShowModal(true);
-  }
+  };
 
   const handleCloseModal = () => {
     setShowModal(false);
-  }
+  };
 
   return (
     <>
       <ul className={style.ul}>
         <li className={style.li}>
-          <button className={style.signIn} onClick={handleSignInClick}>Sign In</button>
-          <button className={style.watchListButton} >Get MongoList</button>
+          <button className={style.signIn} onClick={handleSignInClick}>
+            Sign In
+          </button>
+          <button
+            className={style.watchListButton}
+            onClick={() => navigate("/watchList")}
+          >
+            Get MongoList
+          </button>
         </li>
       </ul>
       {showModal && <SignInModal onClose={handleCloseModal} />}
