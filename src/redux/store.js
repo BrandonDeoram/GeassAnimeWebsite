@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import planToWatchReducer from "./planToWatch";
-export default configureStore({
+import authSlice from "./authSlice";
+
+const store = configureStore({
   reducer: {
-    planToWatch: planToWatchReducer,
+    auth: authSlice,
   },
 });
+
+export default store;

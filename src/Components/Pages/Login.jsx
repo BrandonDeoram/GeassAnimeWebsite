@@ -1,7 +1,10 @@
 import React from "react";
 import styles from "./Login.module.css";
+
+import { useNavigate } from "react-router-dom";
 //rfced
-export default function Login(props) {
+export default function Login() {
+  const navigate = useNavigate();
   const errors = {
     uname: "invalid username",
     pass: "invalid password",
@@ -25,6 +28,12 @@ export default function Login(props) {
           </div>
           <div className={styles.buttonContainer}>
             <input type="submit" />
+            <button
+              className={styles.buttonContainer}
+              onClick={() => navigate("/register")}
+            >
+              Register
+            </button>
           </div>
         </form>
       </div>
