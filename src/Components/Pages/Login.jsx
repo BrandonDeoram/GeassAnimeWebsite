@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/authSlice";
 //rfced
 export default function Login() {
   const navigate = useNavigate();
@@ -9,6 +11,7 @@ export default function Login() {
     uname: "invalid username",
     pass: "invalid password",
   };
+  const dispath = useDispatch();
   const handleSubmit = async (event) => {
     event.preventDefault(); // prevent the default form submission behavior
     console.log(event);
@@ -21,6 +24,7 @@ export default function Login() {
         .then((response) => {
           if ((response.data = "exits")) {
             navigate("/home");
+            dispath(login());
           } else if ((response.data = "notexits")) {
             alert("Please Sign Up");
           }

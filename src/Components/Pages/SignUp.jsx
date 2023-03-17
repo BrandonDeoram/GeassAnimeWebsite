@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./Login.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/authSlice";
 //rfced
 export default function SignUp() {
   const navigate = useNavigate();
@@ -9,6 +11,7 @@ export default function SignUp() {
     uname: "invalid username",
     pass: "invalid password",
   };
+  const dispath = useDispatch();
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(event.target.email.value);
@@ -22,9 +25,10 @@ export default function SignUp() {
           console.log("SIGNUP" + response.data);
           if (response.data === "exits") {
             console.log("exits");
-            alert("User Already Exists");
+            alert("User Already Exists , Please sign in");
           } else if (response.data === "notexits") {
             console.log("going to home");
+            dispath(login());
             navigate("/home");
           }
         })

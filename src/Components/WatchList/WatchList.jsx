@@ -7,7 +7,7 @@ export default function WatchList() {
 
   return (
     <div>
-      <button onClick={() => navigate("/")}>Back</button>
+      <button onClick={() => navigate("/home")}>Back</button>
     </div>
   );
 }
