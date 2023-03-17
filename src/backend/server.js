@@ -18,12 +18,50 @@ const api = axios.create({
   baseURL: "https://api.jikan.moe/v4/",
 });
 
-// const Anime = require("../src/backend/models/Anime");
+// const newUser = require("../src/backend/models/newUser");
+// const { collection } = require("./models/Anime");
+
 app.get("/", function (req, res) {
   res.send("Hello World!");
 });
 
-//MongoDB Stuff
+app.post("/", async function (req, res) {
+  const { email, password } = req.body;
+  try {
+    const check = await collection.findOne({ email: email });
+    if (check) {
+      res.json("exits");
+    } else {
+      res.json("notexits");
+    }
+  } catch (error) {
+    res.json(error);
+  }
+});
+app.post("/signup", async function (req, res) {
+  const { email, password } = req.body;
+
+  const data = {
+    email: email,
+    password: password,
+    toWatch: [],
+    watching: [],
+    completed: [],
+  };
+
+  try {
+    const check = await db.collection("WatchList").findOne({ email: email });
+    if (check) {
+      res.json("exits");
+    } else {
+      res.json("notexits");
+      await db.collection("WatchList").insertOne(data);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 app.post("/anime", async (req, res) => {
   const doc = req.body;
   db.collection("WatchList")
