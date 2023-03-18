@@ -40,26 +40,40 @@ export default function Login() {
   return (
     <>
       <div className={styles.rowWrapper}>
-
         <div className={styles.pictureContainer}>
-        Hello
+          <img
+            src="https://images.alphacoders.com/986/986902.png"
+            alt="no pic"
+          />
         </div>
         <div className={styles.formContainer}>
-          <form onSubmit={handleSubmit}>
+          <p>Welcome back</p>
+          <h3>Login to you Account</h3>
+          <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.inputContainer}>
-              <label>Username </label>
-              <input type="text" name="email" required />
+              <label>Emails</label>
+              <input
+                type="text"
+                name="email"
+                required
+                className={styles.formInput}
+              />
               {/* {renderErrorMessage("uname")} */}
             </div>
             <div className={styles.inputContainer}>
               <label>Password </label>
-              <input type="password" name="password" required />
+              <input
+                type="password"
+                name="password"
+                required
+                className={styles.formInput}
+              />
               {/* {renderErrorMessage("pass")} */}
             </div>
             <div className={styles.buttonContainer}>
-              <input type="submit" />
+              <input type="submit" className={styles.submitButton} />
               <button
-                className={styles.buttonContainer}
+                className={styles.registerButton}
                 onClick={() => navigate("/register")}
               >
                 Register

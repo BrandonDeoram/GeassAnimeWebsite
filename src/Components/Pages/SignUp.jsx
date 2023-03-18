@@ -42,28 +42,48 @@ export default function SignUp() {
   };
   return (
     <>
-      <div className="form">
-        <form onSubmit={handleSubmit}>
-          <div className={styles.inputContainer}>
-            <label>Email </label>
-            <input type="text" name="email" required />
-            {/* {renderErrorMessage("uname")} */}
-          </div>
-          <div className={styles.inputContainer}>
-            <label>Password </label>
-            <input type="password" name="password" required />
-            {/* {renderErrorMessage("pass")} */}
-          </div>
-          <div className={styles.buttonContainer}>
-            <input type="submit" />
-            <button
-              className={styles.buttonContainer}
-              onClick={() => navigate("/")}
-            >
-              Login
-            </button>
-          </div>
-        </form>
+      <div className={styles.rowWrapper}>
+        <div className={styles.pictureContainer}>
+          <img
+            src="https://images.alphacoders.com/986/986902.png"
+            alt="no pic"
+          />
+        </div>
+        <div className={styles.formContainer}>
+          <p>Welcome</p>
+          <h3>Sign up </h3>
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <div className={styles.inputContainer}>
+              <label>Emails</label>
+              <input
+                type="text"
+                name="email"
+                required
+                className={styles.formInput}
+              />
+              {/* {renderErrorMessage("uname")} */}
+            </div>
+            <div className={styles.inputContainer}>
+              <label>Password </label>
+              <input
+                type="password"
+                name="password"
+                required
+                className={styles.formInput}
+              />
+              {/* {renderErrorMessage("pass")} */}
+            </div>
+            <div className={styles.buttonContainer}>
+              <input type="submit" className={styles.submitButton} />
+              <button
+                className={styles.registerButton}
+                onClick={() => navigate("/")}
+              >
+                Log in
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );
