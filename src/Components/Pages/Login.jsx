@@ -39,28 +39,34 @@ export default function Login() {
   };
   return (
     <>
-      <div className="form">
-        <form onSubmit={handleSubmit}>
-          <div className={styles.inputContainer}>
-            <label>Username </label>
-            <input type="text" name="email" required />
-            {/* {renderErrorMessage("uname")} */}
-          </div>
-          <div className={styles.inputContainer}>
-            <label>Password </label>
-            <input type="password" name="password" required />
-            {/* {renderErrorMessage("pass")} */}
-          </div>
-          <div className={styles.buttonContainer}>
-            <input type="submit" />
-            <button
-              className={styles.buttonContainer}
-              onClick={() => navigate("/register")}
-            >
-              Register
-            </button>
-          </div>
-        </form>
+      <div className={styles.rowWrapper}>
+
+        <div className={styles.pictureContainer}>
+        Hello
+        </div>
+        <div className={styles.formContainer}>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.inputContainer}>
+              <label>Username </label>
+              <input type="text" name="email" required />
+              {/* {renderErrorMessage("uname")} */}
+            </div>
+            <div className={styles.inputContainer}>
+              <label>Password </label>
+              <input type="password" name="password" required />
+              {/* {renderErrorMessage("pass")} */}
+            </div>
+            <div className={styles.buttonContainer}>
+              <input type="submit" />
+              <button
+                className={styles.buttonContainer}
+                onClick={() => navigate("/register")}
+              >
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );

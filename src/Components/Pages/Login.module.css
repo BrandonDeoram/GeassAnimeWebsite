@@ -29,3 +29,19 @@
   gap: 8px;
   margin: 10px;
 }
+
+.rowWrapper{
+  display: flex;
+  flex-direction: row;
+  background-color: grey;
+}
+
+.pictureContainer{
+  display: flex;
+  flex: 1;
+}
+
+.formContainer{
+  display: flex;
+  flex:1;
+}
