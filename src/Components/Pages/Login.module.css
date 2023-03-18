@@ -78,7 +78,9 @@
   display: inline-block;
   font-size: 16px;
 }
-
+.passText{
+  margin-top: 10px;
+}
 .submitButton {
   background-color: #373159;
   border-radius: 5px;
@@ -104,6 +106,11 @@
   margin: 10px;
 }
 
+.roundContainer{
+  border-radius: 5px;
+  background-color:#1d202a8a;
+  padding: 32px;
+}
 @media only screen and (max-width: 1000px) {
   .pictureContainer {
     display: none;
