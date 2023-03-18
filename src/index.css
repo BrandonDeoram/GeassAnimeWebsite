@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
+  @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 body {
   margin: 0;
@@ -39,8 +39,8 @@ body {
 }
 
 :root {
-  --backgroundGrey: #131213;
-  --bigHeaderColorPink: #eedaea;
+  --backgroundGrey: #171921;
+  --bigHeaderColorPink: #a5965c;
   --iconColorPink: #f494e3;
 
 

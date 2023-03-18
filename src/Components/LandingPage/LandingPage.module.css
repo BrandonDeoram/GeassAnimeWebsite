@@ -1,169 +1,169 @@
 .container {
-    margin: 20px;
-    /* width: 100% !important; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-Items: center;
+  margin: 20px;
+  /* width: 100% !important; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .geassImage {
-    margin: auto;
-    width: 40%;
-    max-width: 200px;
-    filter: invert(97%) sepia(40%) saturate(2%) hue-rotate(258deg) brightness(114%) contrast(100%);
-    z-index: 2;
+  margin: auto;
+  width: 40%;
+  max-width: 200px;
+  filter: invert(97%) sepia(40%) saturate(2%) hue-rotate(55deg) brightness(120%)
+    contrast(120%);
+
+  z-index: 2;
 }
 
 .searchBackground {
-    font-size: 100px;
-    color: var(--backgroundGrey);
-    outline-color: white;
-    -webkit-text-stroke-width: .28px;
-    -webkit-text-stroke-color: white;
-    /* z-index: 1;
+  font-size: 100px;
+  color: var(--backgroundGrey);
+  outline-color: white;
+  -webkit-text-stroke-width: 0.28px;
+  -webkit-text-stroke-color: white;
+  /* z-index: 1;
     right: 60%;
     top:10%;
     position: absolute; */
 }
 
 .searchContainer {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .searchContent {
-    height: 50%;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    /* height: auto; */
-
+  height: 50%;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  /* height: auto; */
 }
 
 .searchInput {
-    /* background-color: rgb(88, 88, 88); */
-    height: 50px;
-    width: 100%;
-    font-weight: 400;
-    border-radius: 6px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 16px;
-    border: none !important;
+  /* background-color: rgb(88, 88, 88); */
+  height: 50px;
+  width: 100%;
+  font-weight: 400;
+  border-radius: 6px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 16px;
+  border: none !important;
 }
 
 .button {
-    width: 50px;
-    background-color: transparent !important;
-    color: white !important;
-    border: none;
-    margin-left: 10px;
+  width: 50px;
+  background-color: transparent !important;
+  color: white !important;
+  border: none;
+  margin-left: 10px;
 }
 
 .searchButton {
-    height: 100%;
-    width: 100%;
-    display: flex;
+  height: 100%;
+  width: 100%;
+  display: flex;
 }
 
 .linkContainer {
-    margin: 10px;
-    width: 100% !important;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-Items: center;
+  margin: 10px;
+  width: 100% !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .link {
-    /* background: linear-gradient(to bottom, transparent 0%, black 100%); */
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rgba(59, 58, 58, 0.226);
-    color: var(--bigHeaderColorPink);
-    margin: 10px;
-    text-decoration: none;
-
+  /* background: linear-gradient(to bottom, transparent 0%, black 100%); */
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(59, 58, 58, 0.226);
+  color: var(--bigHeaderColorPink);
+  margin: 10px;
+  text-decoration: none;
 }
 
 .link:hover {
-    color: white;
+  color: white;
 }
 
 .searchResContainer {
-    position: relative;
-    padding-right: 16px;
-    margin-top: 16px;
-    margin-bottom: 10rem;
-    width: 95%;
-    height: 500px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    grid-gap: 40px;
-    overflow-y: auto;
-    overflow-x: hidden;
+  position: relative;
+  padding-right: 16px;
+  margin-top: 16px;
+  margin-bottom: 10rem;
+  width: 95%;
+  height: 500px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 @media only screen and (max-width: 768px) {
-    .searchResContainer {
-        /* background-color: red; */
-        /* padding: 16px; */
-        margin-top: 16px;
-        margin-bottom: 5rem;
-        width: 100%;
-        height: 500px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
-        grid-gap: 20px;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-    .linkContainer {
-        display: none;
-    }
-    .searchContainer {
-        margin-top: 16px;
-        width: 100%;
-    }
-    .container{
-      margin: 0px;
-    }
+  .searchResContainer {
+    /* background-color: red; */
+    /* padding: 16px; */
+    margin-top: 16px;
+    margin-bottom: 5rem;
+    width: 100%;
+    height: 500px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+    grid-gap: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .linkContainer {
+    display: none;
+  }
+  .searchContainer {
+    margin-top: 16px;
+    width: 100%;
+  }
+  .container {
+    margin: 0px;
+  }
 }
 
 .card {
-    margin: 0px 0px 0px 0px !important;
-    display: flex;
-    flex: 1;
-    height: 100%;
-    width: 100%;
-    border-radius: 5px;
-    position: relative;
+  margin: 0px 0px 0px 0px !important;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
 }
 
 .card:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 0px 80px -25px rgba(0, 0, 0, 0.5);
-    transition: all 0.4s;
+  transform: scale(1.1);
+  box-shadow: 0px 0px 80px -25px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s;
 }
 
 .image {
-    display: flex;
-    width: 100%;
-    border-radius: 5px 5px 0 0;
+  display: flex;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
 }
 
 .title {
-    color: var(--bigHeaderColorPink);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 30px 0px;
-    text-align: center;
-    /* font-size: 16px; */
-    letter-spacing: 1px;
-    width: 100%;
-    background: linear-gradient(to bottom, transparent 0%, black 100%);
-    z-index: 0;
+  color: var(--bigHeaderColorPink);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px 0px;
+  text-align: center;
+  /* font-size: 16px; */
+  letter-spacing: 1px;
+  width: 100%;
+  background: linear-gradient(to bottom, transparent 0%, black 100%);
+  z-index: 0;
 }
