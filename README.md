@@ -1,6 +1,6 @@
 # Geass Anime Website
-MERN STACK 
-Features:
+MERN STACK
+\n Features:
   - Add Anime to WatchList
   - Delete Anime 
 - MongoDB
