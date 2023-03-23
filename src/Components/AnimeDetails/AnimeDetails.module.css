@@ -1,10 +1,20 @@
 .backButton {
-  position: absolute;
-  top: 0%;
-  margin: 10px;
-  background-color: #2c2f3d96;
+  position: absolute !important;
+  top: 0% !important;
+  margin: 10px !important;
+  background-color: #2c2f3d96 !important;
 }
 
 .buttonColor {
-  color: #a5965c;
+  color: #a5965c !important;
+}
+
+.container {
+  display: flex;
+  height: 93vh;
+
+}
+.backgroundAnime{
+    width: 100%;
+
 }

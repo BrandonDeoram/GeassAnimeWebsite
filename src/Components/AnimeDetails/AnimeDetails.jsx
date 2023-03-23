@@ -21,7 +21,7 @@ export default function AnimeDetails() {
   }
 
   return (
-    <div>
+    <div className={style.container}>
       <Button
         className={style.backButton}
         sx={{
@@ -30,9 +30,15 @@ export default function AnimeDetails() {
       >
         <ArrowBack className={style.buttonColor} />
       </Button>
-      <h1>{anime.title}</h1>
-      <img src={anime.image_url} alt={anime.title} />
-      <div>{anime.synopsis}</div>
+      <div>
+        <h1>{anime.title}</h1>
+        <img
+          src={anime["images"]["jpg"]["image_url"]}
+          alt={"loading"}
+          className={style.backgroundAnime}
+        />
+        <div>{anime.synopsis}</div>
+      </div>
     </div>
   );
 }
