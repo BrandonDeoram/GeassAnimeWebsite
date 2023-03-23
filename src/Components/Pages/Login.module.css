@@ -73,12 +73,11 @@
   border: none;
   color: white;
   padding: 10px;
-  text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
 }
-.passText{
+.passText {
   margin-top: 10px;
 }
 .submitButton {
@@ -106,13 +105,19 @@
   margin: 10px;
 }
 
-.roundContainer{
+.roundContainer {
   border-radius: 5px;
-  background-color:#1d202a8a;
+  background-color: #1d202a8a;
   padding: 32px;
 }
 @media only screen and (max-width: 1000px) {
   .pictureContainer {
     display: none;
+  }
+}
+@media only screen and (max-width: 510px) {
+  .formContainer {
+    justify-content: flex-start;
+    margin:0;
   }
 }

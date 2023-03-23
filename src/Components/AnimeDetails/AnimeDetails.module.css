@@ -1,0 +1,10 @@
+.backButton {
+  position: absolute;
+  top: 0%;
+  margin: 10px;
+  background-color: #2c2f3d96;
+}
+
+.buttonColor {
+  color: #a5965c;
+}

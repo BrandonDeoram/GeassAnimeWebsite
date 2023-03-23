@@ -54,3 +54,13 @@ export const getSearchAnime = async (animeName) => {
     return error;
   }
 };
+export const getAnimeDetails = async (id) => {
+  try {
+    const response = await jikanApi.get(`anime/${id}/full`);
+    // console.log(response.data.data)
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};
