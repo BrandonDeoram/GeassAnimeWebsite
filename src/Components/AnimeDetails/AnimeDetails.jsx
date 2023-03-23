@@ -38,11 +38,19 @@ export default function AnimeDetails() {
       <div className={style.middleContainer}>
         <div className={style.rowHeaderContainer}>
           <h1>{anime.title}</h1>
-          {/* <h1 className={style.dot}>•</h1> */}
           <p className={style.genreTitle}>{anime["genres"][0]["name"]}</p>
         </div>
-
-        <div className={style.description}>{anime.synopsis}</div>
+        <div className={style.rowMiddle}>
+          <img
+            src={anime["images"]["jpg"]["image_url"]}
+            alt={"loading"}
+            className={style.middleImage}
+          />
+          <div className={style.descriptionCol}>
+            <h3 className={style.descriptionTitle}> Description</h3>
+            <p className={style.description}>{anime.synopsis}</p>
+          </div>
+        </div>
       </div>
     </div>
   );
