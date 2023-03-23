@@ -26,11 +26,30 @@
   padding: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   z-index: 1;
 }
 .description {
   z-index: 1;
   top: 50%;
+}
+.rowHeaderContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dot {
+  margin: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.genreTitle::before {
+  content: "•";
+  margin-right: 10px;
+  color: white;
+}
+.genreTitle {
+  margin: 10px;
+  color: grey;
 }

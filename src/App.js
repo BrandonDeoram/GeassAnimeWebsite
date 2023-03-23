@@ -18,6 +18,7 @@ function App() {
   }, [dispatch]);
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
   console.log(isLoggedIn);
   useEffect(() => {
     localStorage.setItem("isLoggedIn", isLoggedIn);

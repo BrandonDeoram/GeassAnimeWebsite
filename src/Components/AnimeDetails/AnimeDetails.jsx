@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getAnimeDetails } from "../../backend/api";
 import { ArrowBack } from "@material-ui/icons";
-import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import style from "./AnimeDetails.module.css";
 export default function AnimeDetails() {
@@ -28,6 +27,7 @@ export default function AnimeDetails() {
         className={style.backgroundAnime}
       />
       <Button
+        onClick={() => window.history.back()}
         className={style.backButton}
         sx={{
           color: "white",
@@ -36,7 +36,12 @@ export default function AnimeDetails() {
         <ArrowBack className={style.buttonColor} />
       </Button>
       <div className={style.middleContainer}>
-        <h1>{anime.title}</h1>
+        <div className={style.rowHeaderContainer}>
+          <h1>{anime.title}</h1>
+          {/* <h1 className={style.dot}>•</h1> */}
+          <p className={style.genreTitle}>{anime["genres"][0]["name"]}</p>
+        </div>
+
         <div className={style.description}>{anime.synopsis}</div>
       </div>
     </div>
