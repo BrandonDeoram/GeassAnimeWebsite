@@ -88,6 +88,14 @@ app.get("/watchList", async (req, res) => {
     });
 });
 
+app.get("/getHomeAnimes", (req, res) => {
+  db.collection("Animes")
+    .find({})
+    .toArray((err, docs) => {
+      res.send(docs);
+      // db.close();
+    });
+});
 app.get("/topAnimes", async (req, res) => {
   try {
     const response = await api.get("top/anime");

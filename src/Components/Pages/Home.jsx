@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getTopAnimes, getGenre } from "../../backend/api";
+import { getTopAnimes, getGenre, getHomeAnimes } from "../../backend/api";
 import LandingPage from "../LandingPage/LandingPage";
 import TitleWCarousel from "../TitleWCarousel/TitleWCarousel";
 import WrapCarousel from "../Wrappers/WrapCarousel";
@@ -15,8 +15,15 @@ export default function Home() {
 
     // Make API calls and set state only if the component is mounted
     if (isMounted) {
-      getTopAnimes().then((res) => setTopAnime(res.data));
-      getGenre(1).then((res) => setActionAnime(res.data));
+      getHomeAnimes().then((data) => {
+        setTopAnime(data["topAnime"]);
+        setActionAnime(data["actionAnime"]);
+        setAdventureAnime(data["adventureAnime"]);
+        setAdvantAnime(data["advantAnime"]);
+        console.log("called");
+      });
+      // getTopAnimes().then((res) => setTopAnime(res.data));
+      // getGenre(1).then((res) => setActionAnime(res.data));
       // .then(() => getGenre(2).then((res) => setAdventureAnime(res.data)))
       // .then(() => getGenre(5).then((res) => setAdvantAnime(res.data)));
     }
@@ -32,14 +39,14 @@ export default function Home() {
       <WrapCarousel>
         <TitleWCarousel title={"Top"} animes={topAnime}></TitleWCarousel>
         <TitleWCarousel title={"Action"} animes={actionAnime}></TitleWCarousel>
-        {/* <TitleWCarousel
+        <TitleWCarousel
           title={"Adventure"}
           animes={adventureAnime}
         ></TitleWCarousel>
         <TitleWCarousel
           title={"Advant Garde"}
           animes={advantAnime}
-        ></TitleWCarousel> */}
+        ></TitleWCarousel>
       </WrapCarousel>
     </>
   );

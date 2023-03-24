@@ -29,7 +29,11 @@ function App() {
         <BrowserRouter>
           {isLoggedIn ? <NavBar /> : null}
           <Routes>
-            <Route exact path="/" element={<Login />}></Route>
+            <Route
+              exact
+              path="/"
+              element={isLoggedIn ? <Home /> : <Login />}
+            ></Route>
             <Route exact path="/register" element={<SignUp />}></Route>
             <Route exact path="/home" element={<Home />}></Route>
             <Route exact path="/watchlist" element={<WatchList />}></Route>

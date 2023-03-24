@@ -64,3 +64,13 @@ export const getAnimeDetails = async (id) => {
     return error;
   }
 };
+export const getHomeAnimes = async () => {
+  try {
+    const response = await api.get("getHomeAnimes");
+    // console.log(response["data"][0]);
+    return response["data"][0]["data"];
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};
