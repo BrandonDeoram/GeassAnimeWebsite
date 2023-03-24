@@ -44,7 +44,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .dot {
@@ -79,9 +79,25 @@
   margin: 16px;
 }
 
+.otherInfomation {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  /* margin: 16px; */
+  width: 80%;
+  height: fit-content;
+  width: fit-content;
+}
+.otherInfomation p {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 16px;
+  padding: 10px;
+  border-radius: 10px;
+}
 @media only screen and (max-width: 969px) {
   .description {
     margin: 20px 0px 0px 0px;
+    width:100% ;
   }
   .rowMiddle {
     flex-wrap: wrap;

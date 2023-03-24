@@ -49,6 +49,11 @@ export default function AnimeDetails() {
           <div className={style.descriptionCol}>
             <h3 className={style.descriptionTitle}> Description</h3>
             <p className={style.description}>{anime.synopsis}</p>
+            <div className={style.otherInfomation}>
+              <p>{anime.score}</p>
+              <p>{anime.rating}</p>
+              <p>{anime.duration}</p>
+            </div>
           </div>
         </div>
       </div>
