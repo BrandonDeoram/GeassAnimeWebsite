@@ -64,7 +64,7 @@
     transform: scale(0.9);
   }
   .watchListButton {
-      display: none;
+    display: none;
   }
 }
 
@@ -97,3 +97,21 @@
   text-align: center;
 }
 
+.dropdown {
+  background-color: #3532356b;
+  margin: 0px 20px 0px 0px;
+}
+.dropdown ul {
+  margin-right: 20px;
+  padding: 0px;
+}
+.dropdown li {
+  padding: 10px;
+  list-style-type: none;
+  margin-right: 20px;
+  margin: 0px;
+}
+.dropdown li:hover {
+  cursor: pointer;
+  color: #a5965c;
+}
