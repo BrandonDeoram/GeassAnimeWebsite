@@ -11,3 +11,17 @@
     margin: 5px;
   }
 }
+
+.columnModal {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  align-items: center;
+  justify-content: center;
+}
+.columnModal button{
+  background-color:   #a5965c !important;
+  color : #171921 !important;
+  width: 200px !important;
+  margin-top: 10px;
+}
