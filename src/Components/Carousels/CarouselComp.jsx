@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./Carousels.module.css";
-import LargeAnimeCard from "../Cards/LargeAnimeCard";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import IconButton from "@mui/material/IconButton";
@@ -8,7 +7,7 @@ import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
 import { sendAnime } from "../../backend/api";
 import cardStyles from "../Cards/Cards.module.css";
 import { Link } from "react-router-dom";
-import { Modal, Box, Typography, Button } from "@mui/material";
+import { Modal, Box, Button } from "@mui/material";
 
 export default function CarouselComp({ props }) {
   let animes = props;
