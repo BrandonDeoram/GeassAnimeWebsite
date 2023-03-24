@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getTopAnimes, getGenre, getHomeAnimes } from "../../backend/api";
+import { getHomeAnimes } from "../../backend/api";
 import LandingPage from "../LandingPage/LandingPage";
 import TitleWCarousel from "../TitleWCarousel/TitleWCarousel";
 import WrapCarousel from "../Wrappers/WrapCarousel";
@@ -22,10 +22,6 @@ export default function Home() {
         setAdvantAnime(data["advantAnime"]);
         console.log("called");
       });
-      // getTopAnimes().then((res) => setTopAnime(res.data));
-      // getGenre(1).then((res) => setActionAnime(res.data));
-      // .then(() => getGenre(2).then((res) => setAdventureAnime(res.data)))
-      // .then(() => getGenre(5).then((res) => setAdvantAnime(res.data)));
     }
 
     // Return a cleanup function to be called when the component unmounts

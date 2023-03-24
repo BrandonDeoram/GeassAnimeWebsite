@@ -16,7 +16,7 @@ export default function AnimeDetails() {
   }, [animeId]);
 
   if (!anime) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   return (
@@ -31,6 +31,7 @@ export default function AnimeDetails() {
         className={style.backButton}
         sx={{
           color: "white",
+          zIndex: "600",
         }}
       >
         <ArrowBack className={style.buttonColor} />
@@ -50,9 +51,9 @@ export default function AnimeDetails() {
             <h3 className={style.descriptionTitle}> Description</h3>
             <p className={style.description}>{anime.synopsis}</p>
             <div className={style.otherInfomation}>
-              <p>{anime.score}</p>
-              <p>{anime.rating}</p>
-              <p>{anime.duration}</p>
+              <p> <span>Scores: </span>{anime.score}</p>
+              <p><span>Rating: </span>{anime.rating}</p>
+              <p><span>Duration: </span>{anime.duration}</p>
             </div>
           </div>
         </div>

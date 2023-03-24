@@ -38,6 +38,10 @@ export default function CarouselComp({ props }) {
             perPage: 10,
             gap: 10,
           },
+          2500: {
+            perPage: 10,
+            gap: 10,
+          },
         },
 
         rewind: true,

@@ -1,5 +1,5 @@
 .backButton {
-  position: absolute !important;
+  position: fixed !important;
   top: 0 !important;
   margin: 10px !important;
   background-color: #2c2f3d96 !important;
@@ -14,6 +14,16 @@
   height: 93vh;
   width: 100%;
 }
+/* Define the keyframes for the animation */
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 .backgroundAnime {
   filter: blur(20px);
   opacity: 0.35;
@@ -24,11 +34,21 @@
   object-fit: cover;
 }
 .middleContainer {
+  animation-name: fadeOut;
+  animation-duration: 1s;
   padding: 50px;
   display: flex;
   flex-direction: column;
   z-index: 1;
   align-items: center;
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .description {
   margin: 16px;
@@ -94,10 +114,13 @@
   padding: 10px;
   border-radius: 10px;
 }
+.otherInfomation p span {
+  color: rgba(255, 255, 255, 0.521);
+}
 @media only screen and (max-width: 969px) {
   .description {
     margin: 20px 0px 0px 0px;
-    width:100% ;
+    width: 100%;
   }
   .rowMiddle {
     flex-wrap: wrap;
