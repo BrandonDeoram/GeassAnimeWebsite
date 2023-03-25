@@ -22,12 +22,16 @@ export default function SignUp() {
           password: event.target.password.value,
         })
         .then((response) => {
-          console.log("SIGNUP" + response.data);
-          if (response.data === "exits") {
+          console.log("SIGNUP" + JSON.stringify(response["data"]["token"]));
+          console.log(response.data.status);
+          console.log(response);
+          if (response.data.status === "exits") {
             console.log("exits");
             alert("User Already Exists , Please sign in");
-          } else if (response.data === "notexits") {
+          } else if (response.data.status === "notexits") {
             console.log("going to home");
+            const token = response["data"]["token"];
+            localStorage.setItem("token", token);
             dispath(login());
             navigate("/home");
           }

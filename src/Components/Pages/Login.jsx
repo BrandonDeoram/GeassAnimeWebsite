@@ -11,32 +11,29 @@ export default function Login() {
     uname: "invalid username",
     pass: "invalid password",
   };
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   const handleSubmit = async (event) => {
     event.preventDefault(); // prevent the default form submission behavior
     console.log(event);
     try {
-      await axios
-        .post("http://localhost:5000/", {
-          email: event.target.email.value,
-          password: event.target.password.value,
-        })
-        .then((response) => {
-          if ((response.data = "exits")) {
-            navigate("/home");
-            dispath(login());
-          } else if ((response.data = "notexits")) {
-            alert("Please Sign Up");
-          }
-        })
-        .catch((error) => {
-          alert("Wrong Details");
-          console.log(error);
-        });
+      const response = await axios.post("http://localhost:5000/", {
+        email: event.target.email.value,
+        password: event.target.password.value,
+      });
+
+      const token = response.data.token; // get the token from the response
+
+      // store the token in localStorage
+      localStorage.setItem("token", token);
+
+      navigate("/home");
+      dispatch(login());
     } catch (error) {
+      alert("Wrong Details");
       console.log(error);
     }
   };
+
   return (
     <>
       <div className={styles.rowWrapper}>

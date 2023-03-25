@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import style from "./NavBar.module.css";
 import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
-
+import axios from "axios";
 export default function NavBar() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +13,23 @@ export default function NavBar() {
   };
 
   const handleOptionClick = (option) => {
-    // Do something with the selected option
+    const token = localStorage.getItem("token");
+    console.log(token);
+    const data = {
+      anime: "anime",
+    };
+    axios
+      .post("http://localhost:5000/protected", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     console.log(`Option ${option} clicked`);
   };
 
