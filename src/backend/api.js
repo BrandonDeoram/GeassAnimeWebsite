@@ -74,3 +74,29 @@ export const getHomeAnimes = async () => {
     return error;
   }
 };
+
+export const addToWatchList = async (anime, watchList) => {
+  const data = {
+    anime: anime,
+    watchList: watchList,
+  };
+  try {
+    const response = await api.post("addToWatchList", data);
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};
+
+export const checkAnimeInList = async (anime) => {
+  try {
+    const response = await api.post("checkAnimeInList", anime);
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};

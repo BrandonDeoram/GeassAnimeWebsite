@@ -12,14 +12,14 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
-    if (isLoggedIn) {
+    console.log("IS LOGGED IN", isLoggedIn);
+    if (isLoggedIn === "true") {
       dispatch(login());
     }
   }, [dispatch]);
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
-  console.log(isLoggedIn);
   useEffect(() => {
     localStorage.setItem("isLoggedIn", isLoggedIn);
   }, [isLoggedIn]);

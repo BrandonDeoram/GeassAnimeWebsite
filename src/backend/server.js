@@ -93,9 +93,25 @@ app.get("/getHomeAnimes", (req, res) => {
     .find({})
     .toArray((err, docs) => {
       res.send(docs);
-      // db.close();
     });
 });
+
+app.post("/addtoWatchList", async (req, res) => {
+  const { anime, watchList } = req.body;
+  const userEmail = req.user;
+  console.log(userEmail);
+  db.collection("WatchList")
+    .updateOne({ email: userEmail }, { $push: { toWatch: anime } })
+    .then(() => {
+      res.status(201).json({ success: true });
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .json({ err: "Couldnt append anime to the toWatch array" });
+    });
+});
+
 app.get("/topAnimes", async (req, res) => {
   try {
     const response = await api.get("top/anime");

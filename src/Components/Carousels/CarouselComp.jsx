@@ -8,10 +8,22 @@ import { sendAnime } from "../../backend/api";
 import cardStyles from "../Cards/Cards.module.css";
 import { Link } from "react-router-dom";
 import { Modal, Box, Button } from "@mui/material";
-
+import CustomModal from "./CustomModal";
+import { addToWatchList } from "../../backend/api";
 export default function CarouselComp({ props }) {
   let animes = props;
   const [open, setOpen] = useState(false);
+  const [currentAnime, setCurrentAnime] = useState(null);
+  const addToList = (option) => {
+    console.log(option === 1);
+    if (option) {
+      //send anime to toWatchList
+      console.log(currentAnime);
+      // addToWatchList(currentAnime, "toWatch");
+    } else if (option === 2) {
+    } else if (option === 3) {
+    }
+  };
 
   const handleOpen = () => {
     setOpen(true);
@@ -80,6 +92,7 @@ export default function CarouselComp({ props }) {
                   onClick={() => {
                     console.log(anime.mal_id);
                     // sendAnime(anime);
+                    setCurrentAnime(anime);
                     handleOpen(); // Open the modal when the button is clicked
                   }}
                 >
@@ -90,49 +103,11 @@ export default function CarouselComp({ props }) {
           );
         })}
       </Splide>
-
-      <Modal
+      <CustomModal
         open={open}
         onClose={handleClose}
-        onClick={(event) => {
-          console.log(event.target);
-          console.log(event.currentTarget);
-          if (event.target === event.currentTarget) {
-            handleClose();
-          }
-        }}
-        sx={{
-          backgroundColor: "rgba(0,0,0,0.3)",
-          position: "absolute",
-          top: "0",
-          left: "0",
-          right: "0",
-          bottom: "0",
-          height: "300px",
-          width: "300px",
-          // transform: "translate(-50%, -50%)",
-          pointerEvents: "auto",
-          margin: "auto",
-          borderRadius: "10px",
-        }}
-      >
-        <Box
-          sx={{
-            padding: "1rem",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <h3>Add to WatchList</h3>
-          <div className={styles.columnModal}>
-            <Button>toWatch</Button>
-            <Button>Watching</Button>
-            <Button>Completed</Button>
-          </div>
-        </Box>
-      </Modal>
+        anime={currentAnime}
+      ></CustomModal>
     </div>
   );
 }
