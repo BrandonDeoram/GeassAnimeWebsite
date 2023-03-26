@@ -7,32 +7,34 @@ export default function NavBar() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const avatarRef = useRef(null);
-
+  const [user, setUser] = useState(null);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
+  const token = localStorage.getItem("token");
   const handleOptionClick = (option) => {
-    const token = localStorage.getItem("token");
-    console.log(token);
-    const data = {
-      anime: "anime",
-    };
+    console.log(`Option ${option} clicked`);
+  };
+  useEffect(() => {
     axios
-      .post("http://localhost:5000/protected", data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .post(
+        "http://localhost:5000/protected",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
-        console.log(response.data);
+        // setUser(response.data);
+        setUser(response.data.email);
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);
       });
-    console.log(`Option ${option} clicked`);
-  };
-
+  }, []);
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (
@@ -72,6 +74,9 @@ export default function NavBar() {
                 style={{ position: "absolute", right: "0", zIndex: "500" }}
               >
                 <ul>
+                  <li>
+                    Email: <span className={style.email}>{user} </span>{" "}
+                  </li>
                   <li onClick={() => handleOptionClick(1)}>WatchList</li>
                   <li onClick={() => handleOptionClick(2)}>Logout</li>
                 </ul>

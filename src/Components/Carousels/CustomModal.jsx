@@ -7,12 +7,11 @@ export default function CustomModal({ open, onClose, anime }) {
     const token = localStorage.getItem("token");
 
     if (option === 1) {
-      //send anime to toWatchList
-      console.log(anime);
       addToWatchList(anime, "toWatch", token);
     } else if (option === 2) {
-      console.log(option);
+      addToWatchList(anime, "watching", token);
     } else if (option === 3) {
+      addToWatchList(anime, "completed", token);
     }
   };
   return (

@@ -53,7 +53,6 @@ app.post("/", async function (req, res) {
 function verifyToken(req, res, next) {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
-  console.log("token " + token);
   if (!token) {
     console.log("failed");
     res.status(401).json({ error: "Unauthorized" });
@@ -75,26 +74,13 @@ function verifyToken(req, res, next) {
 app.post("/protected", verifyToken, async function (req, res) {
   const { ObjectId } = require("mongodb");
   const userId = new ObjectId(req.userId);
-  console.log("try");
-  console.log(userId);
   try {
     const user = await db.collection("WatchList").findOne({ _id: userId });
-    console.log(user);
 
     if (!user) {
       res.status(404).json({ error: "User not found" });
       return;
     }
-
-    const { anime, watchList } = req.body;
-    console.log(req.body);
-
-    console.log("Watch list " + watchList);
-    user.toWatch.push(anime);
-
-    await db
-      .collection("WatchList")
-      .updateOne({ _id: userId }, { $set: { toWatch: user.toWatch } });
 
     res.json(user);
   } catch (error) {
@@ -103,13 +89,48 @@ app.post("/protected", verifyToken, async function (req, res) {
   }
 });
 
+app.post("/signup", async function (req, res) {
+  const { email, password } = req.body;
+
+  const data = {
+    email: email,
+    password: password,
+    toWatch: [],
+    watching: [],
+    completed: [],
+  };
+
+  try {
+    const check = await db.collection("WatchList").findOne({ email: email });
+    if (check) {
+      res.json("exits");
+    } else {
+      await db.collection("WatchList").insertOne(data);
+      const user = await db
+        .collection("WatchList")
+        .findOne({ email: email, password: password });
+
+      if (!user) {
+        res.status(401).json({ error: "Invalid credentials" });
+        return;
+      }
+
+      const token = jwt.sign({ userId: user._id }, JWT_SECRET);
+      res.json({ token: token, status: "notexits" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Everything to do with CRUD operations
 app.post("/addtoWatchList", verifyToken, async (req, res) => {
   const { ObjectId } = require("mongodb");
   const userId = new ObjectId(req.userId);
   //Verify userID
   try {
     const user = await db.collection("WatchList").findOne({ _id: userId });
-    console.log(user);
 
     if (!user) {
       res.status(404).json({ error: "User not found" });
@@ -161,55 +182,6 @@ app.post("/addtoWatchList", verifyToken, async (req, res) => {
     console.log(error);
     res.status(500).json({ error: "Internal server error" });
   }
-});
-app.post("/signup", async function (req, res) {
-  const { email, password } = req.body;
-
-  const data = {
-    email: email,
-    password: password,
-    toWatch: [],
-    watching: [],
-    completed: [],
-  };
-
-  try {
-    const check = await db.collection("WatchList").findOne({ email: email });
-    if (check) {
-      res.json("exits");
-    } else {
-      await db.collection("WatchList").insertOne(data);
-      const user = await db
-        .collection("WatchList")
-        .findOne({ email: email, password: password });
-
-      if (!user) {
-        res.status(401).json({ error: "Invalid credentials" });
-        return;
-      }
-
-      const token = jwt.sign({ userId: user._id }, JWT_SECRET);
-      console.log(token);
-      res.json({ token: token, status: "notexits" });
-    }
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-
-app.post("/anime", async (req, res) => {
-  const doc = req.body;
-  db.collection("WatchList")
-    .insertOne({
-      doc,
-    })
-    .then((result) => {
-      console.log(res.status(201).json(result));
-    })
-    .catch((err) => {
-      res.status(500).json({ err: "Couldnt create new doc" });
-    });
 });
 
 app.get("/watchList", async (req, res) => {
