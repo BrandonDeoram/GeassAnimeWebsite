@@ -75,13 +75,17 @@ export const getHomeAnimes = async () => {
   }
 };
 
-export const addToWatchList = async (anime, watchList) => {
+export const addToWatchList = async (anime, watchList, token) => {
   const data = {
     anime: anime,
     watchList: watchList,
   };
   try {
-    const response = await api.post("addToWatchList", data);
+    const response = await api.post("addToWatchList", data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     console.log(response.data);
     return response.data;
   } catch (error) {

@@ -86,7 +86,10 @@ app.post("/protected", verifyToken, async function (req, res) {
       return;
     }
 
-    const {anime} = req.body;
+    const { anime, watchList } = req.body;
+    console.log(req.body);
+
+    console.log("Watch list " + watchList);
     user.toWatch.push(anime);
 
     await db
@@ -100,6 +103,65 @@ app.post("/protected", verifyToken, async function (req, res) {
   }
 });
 
+app.post("/addtoWatchList", verifyToken, async (req, res) => {
+  const { ObjectId } = require("mongodb");
+  const userId = new ObjectId(req.userId);
+  //Verify userID
+  try {
+    const user = await db.collection("WatchList").findOne({ _id: userId });
+    console.log(user);
+
+    if (!user) {
+      res.status(404).json({ error: "User not found" });
+      return;
+    }
+    const { anime, watchList } = req.body;
+    switch (watchList) {
+      case "toWatch":
+        await db
+          .collection("WatchList")
+          .updateOne({ _id: userId }, { $push: { toWatch: anime } })
+          .then(() => {
+            res.status(201).json({ success: true });
+          })
+          .catch((err) => {
+            res
+              .status(500)
+              .json({ err: "Couldnt append anime to the toWatch array" });
+          });
+        break;
+      case "watching":
+        await db
+          .collection("WatchList")
+          .updateOne({ _id: userId }, { $push: { watching: anime } })
+          .then(() => {
+            res.status(201).json({ success: true });
+          })
+          .catch((err) => {
+            res
+              .status(500)
+              .json({ err: "Couldnt append anime to the watching array" });
+          });
+        break;
+      case "completed":
+        await db
+          .collection("WatchList")
+          .updateOne({ _id: userId }, { $push: { completed: anime } })
+          .then(() => {
+            res.status(201).json({ success: true });
+          })
+          .catch((err) => {
+            res
+              .status(500)
+              .json({ err: "Couldnt append anime to the completed array" });
+          });
+        break;
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 app.post("/signup", async function (req, res) {
   const { email, password } = req.body;
 
@@ -167,22 +229,6 @@ app.get("/getHomeAnimes", (req, res) => {
     .find({})
     .toArray((err, docs) => {
       res.send(docs);
-    });
-});
-
-app.post("/addtoWatchList", async (req, res) => {
-  const { anime, watchList } = req.body;
-  const userEmail = req.user;
-  console.log(userEmail);
-  db.collection("WatchList")
-    .updateOne({ email: userEmail }, { $push: { toWatch: anime } })
-    .then(() => {
-      res.status(201).json({ success: true });
-    })
-    .catch((err) => {
-      res
-        .status(500)
-        .json({ err: "Couldnt append anime to the toWatch array" });
     });
 });
 
