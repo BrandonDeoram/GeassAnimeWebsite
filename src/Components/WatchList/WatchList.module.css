@@ -1,0 +1,53 @@
+.container {
+  margin: 0 auto;
+  min-width: 320px;
+  padding-left: 20px;
+  padding-right: 20px;
+  /* width: 100%; */
+}
+.listWrap {
+}
+.listSection {
+  padding: 20px;
+  display: flex !important;
+  flex-direction: row;
+  background-color: var(--secondaryGrey);
+  align-items: center;
+}
+.rowHeader {
+  display: flex;
+  flex-direction: row;
+}
+
+.rowHeader > div {
+  flex: 1;
+  /* background-color: green; */
+  padding: 10px;
+}
+.rowHeader > div:nth-child(2) {
+  background-color: green;
+  flex: 9;
+}
+
+.cover {
+  display: block;
+  max-width: 60px;
+  padding: 0;
+}
+.listSection > img {
+  max-width: 60px;
+  min-width: 60px;
+}
+.listSection h3 {
+  flex:9;
+  margin: 0;
+  margin-left: 20px;
+}
+.listSection button {
+  /* display: flex !important; */
+  background-color: var(--secondaryGrey);
+  flex: 2 !important;
+  padding: 10px;
+  margin-right: 50%;
+  color: white;
+}

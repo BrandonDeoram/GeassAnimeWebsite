@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import buttonStyle from "../AnimeDetails/AnimeDetails.module.css";
 import { ArrowBack } from "@material-ui/icons";
-
+import style from "./WatchList.module.css";
+import WatchListCard from "./WatchListCard";
 export default function WatchList() {
-  //Call MongoDB API
   return (
     <div>
       <Button
@@ -18,6 +18,20 @@ export default function WatchList() {
       >
         <ArrowBack className={buttonStyle.buttonColor} />
       </Button>
+      <div className={style.container}>
+        <div className={style.listWrap}>
+          <h3>To Watch</h3>
+          <div className={style.rowHeader}>
+            <div className={style.cover}></div>
+            <div >Title</div>
+            <div>Switch To</div>
+          </div>
+          <WatchListCard
+            image={"https://cdn.myanimelist.net/images/anime/1988/113791.jpg"}
+            title={"idk"}
+          />
+        </div>
+      </div>
     </div>
   );
 }

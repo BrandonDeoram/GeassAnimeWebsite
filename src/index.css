@@ -1,4 +1,4 @@
-  @import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 body {
   margin: 0;
@@ -30,7 +30,6 @@ body {
 ::-webkit-scrollbar-thumb {
   background: grey;
   border-radius: 10px;
-
 }
 
 /* Handle on hover */
@@ -42,12 +41,10 @@ body {
   --backgroundGrey: #171921;
   --bigHeaderColorPink: #a5965c;
   --iconColorPink: #f494e3;
-
-
+  --secondaryGrey: #2c2f3d96;
 }
 
 .App {
-
   background-color: var(--backgroundGrey);
   flex-direction: column;
   height: 100vh;
@@ -56,12 +53,10 @@ body {
   overflow-x: hidden;
 }
 
-
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 
 .row {
   overflow: hidden;
