@@ -5,11 +5,10 @@ import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
 import { sendAnime } from "../../backend/api";
 import cardStyle from "../Cards/Cards.module.css";
 export default function SearchCards({ searchResults }) {
-  console.log(searchResults);
   return (
     <div className={styles.searchResContainer}>
-      {searchResults.map((anime) => (
-        <div className={cardStyle.card}>
+      {searchResults.map((anime, id) => (
+        <div className={cardStyle.card} key={id}>
           <a href={`/anime/${anime.mal_id}`}>
             <img src={anime["images"]["jpg"]["image_url"]} alt={"loading"} />
             <div className={cardStyle.title}>{anime["title"]}</div>

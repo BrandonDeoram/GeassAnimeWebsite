@@ -13,7 +13,9 @@ export default function NavBar() {
   };
   const token = localStorage.getItem("token");
   const handleOptionClick = (option) => {
-    console.log(`Option ${option} clicked`);
+    if (option === 1) {
+      navigate("/watchList");
+    }
   };
   useEffect(() => {
     axios
@@ -34,7 +36,7 @@ export default function NavBar() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [token]);
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (
