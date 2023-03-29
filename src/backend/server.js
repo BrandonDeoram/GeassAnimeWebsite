@@ -137,47 +137,129 @@ app.post("/addtoWatchList", verifyToken, async (req, res) => {
       return;
     }
     const { anime, watchList } = req.body;
-    console.log(watchList);
-    switch (watchList) {
-      case "toWatch":
-        await db
-          .collection("WatchList")
-          .updateOne({ _id: userId }, { $push: { toWatch: anime } })
-          .then(() => {
-            res.status(201).json({ success: true });
-          })
-          .catch((err) => {
-            res
-              .status(500)
-              .json({ err: "Couldnt append anime to the toWatch array" });
-          });
-        break;
-      case "watching":
-        await db
-          .collection("WatchList")
-          .updateOne({ _id: userId }, { $push: { watching: anime } })
-          .then(() => {
-            res.status(201).json({ success: true });
-          })
-          .catch((err) => {
-            res
-              .status(500)
-              .json({ err: "Couldnt append anime to the watching array" });
-          });
-        break;
-      case "completed":
-        await db
-          .collection("WatchList")
-          .updateOne({ _id: userId }, { $push: { completed: anime } })
-          .then(() => {
-            res.status(201).json({ success: true });
-          })
-          .catch((err) => {
-            res
-              .status(500)
-              .json({ err: "Couldnt append anime to the completed array" });
-          });
-        break;
+    // Check to see if anime is already in any of the WatchList Collection
+    const animeId = anime["mal_id"];
+    console.log(animeId);
+    const animeStatus = await db.collection("WatchList").findOne({
+      $and: [
+        { _id: userId },
+        {
+          $or: [
+            { toWatch: { $elemMatch: { mal_id: animeId } } },
+            { watching: { $elemMatch: { mal_id: animeId } } },
+            { completed: { $elemMatch: { mal_id: animeId } } },
+          ],
+        },
+      ],
+    });
+
+    if (animeStatus) {
+      console.log("Found somewhere");
+      let arrayName;
+      if (animeStatus.toWatch.find((a) => a.mal_id === animeId)) {
+        arrayName = "toWatch";
+      } else if (animeStatus.watching.find((a) => a.mal_id === animeId)) {
+        arrayName = "watching";
+      } else if (animeStatus.completed.find((a) => a.mal_id === animeId)) {
+        arrayName = "completed";
+      }
+      console.log(arrayName);
+      // Delete the anime from the current array
+      const updateResult = await db
+        .collection("WatchList")
+        .updateOne(
+          { _id: userId },
+          { $pull: { [arrayName]: { mal_id: animeId } } }
+        );
+      if (updateResult.modifiedCount === 1) {
+        console.log("Anime deleted from", arrayName);
+      }
+
+      // Add the anime to the new array
+      switch (watchList) {
+        case "toWatch":
+          await db
+            .collection("WatchList")
+            .updateOne({ _id: userId }, { $push: { toWatch: anime } })
+            .then(() => {
+              res.status(201).json({ success: true });
+            })
+            .catch((err) => {
+              res
+                .status(500)
+                .json({ err: "Couldnt append anime to the toWatch array" });
+            });
+          break;
+        case "watching":
+          await db
+            .collection("WatchList")
+            .updateOne({ _id: userId }, { $push: { watching: anime } })
+            .then(() => {
+              res.status(201).json({ success: true });
+            })
+            .catch((err) => {
+              res
+                .status(500)
+                .json({ err: "Couldnt append anime to the watching array" });
+            });
+          break;
+        case "completed":
+          await db
+            .collection("WatchList")
+            .updateOne({ _id: userId }, { $push: { completed: anime } })
+            .then(() => {
+              res.status(201).json({ success: true });
+            })
+            .catch((err) => {
+              res
+                .status(500)
+                .json({ err: "Couldnt append anime to the completed array" });
+            });
+          break;
+      }
+    } else {
+      console.log("Anime not found adding");
+      switch (watchList) {
+        case "toWatch":
+          await db
+            .collection("WatchList")
+            .updateOne({ _id: userId }, { $push: { toWatch: anime } })
+            .then(() => {
+              res.status(201).json({ success: true });
+            })
+            .catch((err) => {
+              res
+                .status(500)
+                .json({ err: "Couldnt append anime to the toWatch array" });
+            });
+          break;
+        case "watching":
+          await db
+            .collection("WatchList")
+            .updateOne({ _id: userId }, { $push: { watching: anime } })
+            .then(() => {
+              res.status(201).json({ success: true });
+            })
+            .catch((err) => {
+              res
+                .status(500)
+                .json({ err: "Couldnt append anime to the watching array" });
+            });
+          break;
+        case "completed":
+          await db
+            .collection("WatchList")
+            .updateOne({ _id: userId }, { $push: { completed: anime } })
+            .then(() => {
+              res.status(201).json({ success: true });
+            })
+            .catch((err) => {
+              res
+                .status(500)
+                .json({ err: "Couldnt append anime to the completed array" });
+            });
+          break;
+      }
     }
   } catch (error) {
     console.log(error);

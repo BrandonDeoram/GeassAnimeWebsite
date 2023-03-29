@@ -17,6 +17,7 @@ export default function WatchList() {
       setToWatch(data["toWatch"]);
       setWatching(data["watching"]);
       setCompleted(data["completed"]);
+      console.log("re-run");
     });
   }, []);
   return (
@@ -41,7 +42,6 @@ export default function WatchList() {
               <div>Switch To</div>
             </div>
             {toWatch.map((anime, id) => {
-              console.log(anime);
               return <WatchListCard anime={anime} key={id}></WatchListCard>;
             })}
           </div>
@@ -55,7 +55,7 @@ export default function WatchList() {
               <div>Switch To</div>
             </div>
             {watching.map((anime, id) => {
-              console.log(anime);
+           
               return <WatchListCard anime={anime} key={id}></WatchListCard>;
             })}
           </div>
@@ -69,7 +69,7 @@ export default function WatchList() {
               <div>Switch To</div>
             </div>
             {completed.map((anime, id) => {
-              console.log(anime);
+          
               return <WatchListCard anime={anime} key={id}></WatchListCard>;
             })}
           </div>

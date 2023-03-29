@@ -6,9 +6,11 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-
+import CustomModal from "../Carousels/CustomModal";
 //Copied from MUI doc
-export default function SwitchMenu() {
+
+export default function SwitchMenu({ anime }) {
+
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -55,39 +57,11 @@ export default function SwitchMenu() {
       >
         List
       </Button>
-      <Popper
+      <CustomModal
         open={open}
-        anchorEl={anchorRef.current}
-        role={undefined}
-        placement="bottom-start"
-        transition
-        disablePortal
-      >
-        {({ TransitionProps, placement }) => (
-          <Grow
-            {...TransitionProps}
-            style={{
-              transformOrigin:
-                placement === "bottom-start" ? "left top" : "left bottom",
-            }}
-          >
-            <Paper>
-              <ClickAwayListener onClickAway={handleClose}>
-                <MenuList
-                  autoFocusItem={open}
-                  id="composition-menu"
-                  aria-labelledby="composition-button"
-                  onKeyDown={handleListKeyDown}
-                >
-                  <MenuItem onClick={handleClose}>To Watch</MenuItem>
-                  <MenuItem onClick={handleClose}>Watching</MenuItem>
-                  <MenuItem onClick={handleClose}>Completed</MenuItem>
-                </MenuList>
-              </ClickAwayListener>
-            </Paper>
-          </Grow>
-        )}
-      </Popper>
+        onClose={handleClose}
+        anime={anime}
+      ></CustomModal>
     </div>
   );
 }

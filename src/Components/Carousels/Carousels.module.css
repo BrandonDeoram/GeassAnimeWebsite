@@ -19,9 +19,15 @@
   align-items: center;
   justify-content: center;
 }
-.columnModal button{
-  background-color:   #a5965c !important;
-  color : #171921 !important;
+.columnModal button {
+  background-color: #a5965c !important;
+  color: #171921 !important;
+  width: 200px !important;
+  margin-top: 10px;
+} 
+.columnModal button:nth-child(4) {
+  background-color: rgb(252, 14, 14) !important;
+  color: white !important;
   width: 200px !important;
   margin-top: 10px;
 }

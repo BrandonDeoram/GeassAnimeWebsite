@@ -4,6 +4,7 @@ import styles from "./Carousels.module.css";
 import { addToWatchList } from "../../backend/api";
 export default function CustomModal({ open, onClose, anime }) {
   const addToList = (option) => {
+
     const token = localStorage.getItem("token");
     if (option === 1) {
       addToWatchList(anime, "toWatch", token);
@@ -11,6 +12,8 @@ export default function CustomModal({ open, onClose, anime }) {
       addToWatchList(anime, "watching", token);
     } else if (option === 3) {
       addToWatchList(anime, "completed", token);
+    } else if (option === 4) {
+      // addToWatchList(anime, "completed", token);
     }
   };
   return (
@@ -50,6 +53,7 @@ export default function CustomModal({ open, onClose, anime }) {
           <Button onClick={() => addToList(1)}>toWatch</Button>
           <Button onClick={() => addToList(2)}>Watching</Button>
           <Button onClick={() => addToList(3)}>Completed</Button>
+          <Button onClick={() => addToList(4)}>Delete</Button>
         </div>
       </Box>
     </Modal>

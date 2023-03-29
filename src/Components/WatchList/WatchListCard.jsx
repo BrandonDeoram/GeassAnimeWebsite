@@ -6,13 +6,12 @@ export default function WatchListCard({ anime }) {
   return (
     <div className={style.listSection}>
       <img src={anime["images"]["jpg"]["image_url"]} alt={"loadig"} />
-
       <h3>
         <Link to={`/anime/${anime.mal_id}`} className={style.titleLink}>
           {anime.title}
         </Link>
       </h3>
-      <SwitchMenu></SwitchMenu>
+      <SwitchMenu anime={anime}></SwitchMenu>
     </div>
   );
 }
