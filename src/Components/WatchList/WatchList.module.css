@@ -5,14 +5,20 @@
   padding-right: 20px;
   /* width: 100%; */
 }
-.listWrap {
+.listWrap:nth-child(2) {
+  margin-top: 70px;
 }
+.listWrap:nth-child(3) {
+  margin-top: 70px;
+}
+
 .listSection {
   padding: 20px;
   display: flex !important;
   flex-direction: row;
   background-color: var(--secondaryGrey);
   align-items: center;
+  border-radius: 10px;
 }
 .rowHeader {
   display: flex;
@@ -49,16 +55,27 @@
   margin-left: 20px;
 }
 .listSection button {
-  /* display: flex !important; */
   background-color: var(--secondaryGrey);
   flex: 2 !important;
   padding: 10px;
   max-width: 100px;
   margin-left: 5px;
-  /* margin-right: 45%; */
   color: white;
+  opacity: 1 !important;
+}
+.listSection:hover {
+  opacity: 0.7;
+  transition: all 0.4s;
 }
 
+.listSection:hover :not(button) {
+  opacity: 1;
+}
+
+.roundBorder {
+  background-color: var(--secondaryGrey);
+  border-radius: 10px;
+}
 
 @media (max-width: 938px) {
   .rowHeader > div:nth-child(2) {

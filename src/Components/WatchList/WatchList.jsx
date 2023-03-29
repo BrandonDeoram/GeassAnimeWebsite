@@ -21,15 +21,45 @@ export default function WatchList() {
       <div className={style.container}>
         <div className={style.listWrap}>
           <h3>To Watch</h3>
-          <div className={style.rowHeader}>
-            <div className={style.cover}></div>
-            <div >Title</div>
-            <div>Switch To</div>
+          <div className={style.roundBorder}>
+            <div className={style.rowHeader}>
+              <div className={style.cover}></div>
+              <div>Title</div>
+              <div>Switch To</div>
+            </div>
+            <WatchListCard
+              image={"https://cdn.myanimelist.net/images/anime/1988/113791.jpg"}
+              title={"Jutjustu Kaisen"}
+            />
           </div>
-          <WatchListCard
-            image={"https://cdn.myanimelist.net/images/anime/1988/113791.jpg"}
-            title={"idk"}
-          />
+        </div>
+        <div className={style.listWrap}>
+          <h3>Watching</h3>
+          <div className={style.roundBorder}>
+            <div className={style.rowHeader}>
+              <div className={style.cover}></div>
+              <div>Title</div>
+              <div>Switch To</div>
+            </div>
+            <WatchListCard
+              image={"https://cdn.myanimelist.net/images/anime/1988/113791.jpg"}
+              title={"Jutjustu Kaisen"}
+            />
+          </div>
+        </div>
+        <div className={style.listWrap}>
+          <h3>Completed</h3>
+          <div className={style.roundBorder}>
+            <div className={style.rowHeader}>
+              <div className={style.cover}></div>
+              <div>Title</div>
+              <div>Switch To</div>
+            </div>
+            <WatchListCard
+              image={"https://cdn.myanimelist.net/images/anime/1988/113791.jpg"}
+              title={"Jutjustu Kaisen"}
+            />
+          </div>
         </div>
       </div>
     </div>

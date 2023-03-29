@@ -79,9 +79,9 @@ export default function SwitchMenu() {
                   aria-labelledby="composition-button"
                   onKeyDown={handleListKeyDown}
                 >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
-                  <MenuItem onClick={handleClose}>Logout</MenuItem>
+                  <MenuItem onClick={handleClose}>To Watch</MenuItem>
+                  <MenuItem onClick={handleClose}>Watching</MenuItem>
+                  <MenuItem onClick={handleClose}>Completed</MenuItem>
                 </MenuList>
               </ClickAwayListener>
             </Paper>
