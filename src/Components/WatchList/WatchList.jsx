@@ -5,7 +5,20 @@ import buttonStyle from "../AnimeDetails/AnimeDetails.module.css";
 import { ArrowBack } from "@material-ui/icons";
 import style from "./WatchList.module.css";
 import WatchListCard from "./WatchListCard";
+import { getWatchList } from "../../backend/api";
+import { useEffect, useState } from "react";
 export default function WatchList() {
+  const [toWatch, setToWatch] = useState([]);
+  const [watching, setWatching] = useState([]);
+  const [completed, setCompleted] = useState([]);
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    getWatchList(token).then((data) => {
+      setToWatch(data["toWatch"]);
+      setWatching(data["watching"]);
+      setCompleted(data["completed"]);
+    });
+  }, []);
   return (
     <div>
       <Button
@@ -27,10 +40,10 @@ export default function WatchList() {
               <div>Title</div>
               <div>Switch To</div>
             </div>
-            <WatchListCard
-              image={"https://cdn.myanimelist.net/images/anime/1988/113791.jpg"}
-              title={"Jutjustu Kaisen"}
-            />
+            {toWatch.map((anime, id) => {
+              console.log(anime);
+              return <WatchListCard anime={anime} key={id}></WatchListCard>;
+            })}
           </div>
         </div>
         <div className={style.listWrap}>
@@ -41,10 +54,10 @@ export default function WatchList() {
               <div>Title</div>
               <div>Switch To</div>
             </div>
-            <WatchListCard
-              image={"https://cdn.myanimelist.net/images/anime/1988/113791.jpg"}
-              title={"Jutjustu Kaisen"}
-            />
+            {watching.map((anime, id) => {
+              console.log(anime);
+              return <WatchListCard anime={anime} key={id}></WatchListCard>;
+            })}
           </div>
         </div>
         <div className={style.listWrap}>
@@ -55,10 +68,10 @@ export default function WatchList() {
               <div>Title</div>
               <div>Switch To</div>
             </div>
-            <WatchListCard
-              image={"https://cdn.myanimelist.net/images/anime/1988/113791.jpg"}
-              title={"Jutjustu Kaisen"}
-            />
+            {completed.map((anime, id) => {
+              console.log(anime);
+              return <WatchListCard anime={anime} key={id}></WatchListCard>;
+            })}
           </div>
         </div>
       </div>

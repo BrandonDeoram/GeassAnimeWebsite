@@ -104,3 +104,16 @@ export const checkAnimeInList = async (anime) => {
     return error;
   }
 };
+export const getWatchList = async (token) => {
+  try {
+    const response = await api.get("getWatchList", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};

@@ -5,7 +5,6 @@ import { addToWatchList } from "../../backend/api";
 export default function CustomModal({ open, onClose, anime }) {
   const addToList = (option) => {
     const token = localStorage.getItem("token");
-
     if (option === 1) {
       addToWatchList(anime, "toWatch", token);
     } else if (option === 2) {

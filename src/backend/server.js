@@ -137,6 +137,7 @@ app.post("/addtoWatchList", verifyToken, async (req, res) => {
       return;
     }
     const { anime, watchList } = req.body;
+    console.log(watchList);
     switch (watchList) {
       case "toWatch":
         await db
@@ -178,6 +179,22 @@ app.post("/addtoWatchList", verifyToken, async (req, res) => {
           });
         break;
     }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+app.get("/getWatchList", verifyToken, async (req, res) => {
+  const { ObjectId } = require("mongodb");
+  const userId = new ObjectId(req.userId);
+  //Verify userID
+  try {
+    const user = await db.collection("WatchList").findOne({ _id: userId });
+    if (!user) {
+      res.status(404).json({ error: "User not found" });
+      return;
+    }
+    res.json(user);
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Internal server error" });
