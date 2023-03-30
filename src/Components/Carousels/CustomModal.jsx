@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Box, Button } from "@mui/material";
 import styles from "./Carousels.module.css";
-import { addToWatchList } from "../../backend/api";
+import { addToWatchList, deleteAnime } from "../../backend/api";
 import { useDispatch } from "react-redux";
 import { increment } from "../../redux/updateListSlice";
 export default function CustomModal({ open, onClose, anime }) {
@@ -9,15 +9,18 @@ export default function CustomModal({ open, onClose, anime }) {
   const addToList = (option) => {
     const token = localStorage.getItem("token");
     if (option === 1) {
-      addToWatchList(anime, "toWatch", token);
+      addToWatchList(anime, "toWatch", token).then(() => dispatch(increment()));
     } else if (option === 2) {
-      addToWatchList(anime, "watching", token);
+      addToWatchList(anime, "watching", token).then(() =>
+        dispatch(increment())
+      );
     } else if (option === 3) {
-      addToWatchList(anime, "completed", token);
+      addToWatchList(anime, "completed", token).then(() =>
+        dispatch(increment())
+      );
     } else if (option === 4) {
-      // addToWatchList(anime, "completed", token);
+      deleteAnime(anime, token).then(() => dispatch(increment()));
     }
-    dispatch(increment());
   };
   return (
     <Modal

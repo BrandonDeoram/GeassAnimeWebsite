@@ -154,7 +154,6 @@ app.post("/addtoWatchList", verifyToken, async (req, res) => {
     });
 
     if (animeStatus) {
-      console.log("Found somewhere");
       let arrayName;
       if (animeStatus.toWatch.find((a) => a.mal_id === animeId)) {
         arrayName = "toWatch";
@@ -267,6 +266,59 @@ app.post("/addtoWatchList", verifyToken, async (req, res) => {
   }
 });
 
+app.post("/deleteAnime", verifyToken, async (req, res) => {
+  const { ObjectId } = require("mongodb");
+  const userId = new ObjectId(req.userId);
+  //Verify userID
+  try {
+    const user = await db.collection("WatchList").findOne({ _id: userId });
+
+    if (!user) {
+      res.status(404).json({ error: "User not found" });
+      return;
+    }
+    const { anime } = req.body;
+    // Check to see if anime is already in any of the WatchList Collection
+    console.log(anime);
+    const animeId = anime["mal_id"];
+    console.log(animeId);
+    const animeStatus = await db.collection("WatchList").findOne({
+      $and: [
+        { _id: userId },
+        {
+          $or: [
+            { toWatch: { $elemMatch: { mal_id: animeId } } },
+            { watching: { $elemMatch: { mal_id: animeId } } },
+            { completed: { $elemMatch: { mal_id: animeId } } },
+          ],
+        },
+      ],
+    });
+
+    if (animeStatus) {
+      let arrayName;
+      if (animeStatus.toWatch.find((a) => a.mal_id === animeId)) {
+        arrayName = "toWatch";
+      } else if (animeStatus.watching.find((a) => a.mal_id === animeId)) {
+        arrayName = "watching";
+      } else if (animeStatus.completed.find((a) => a.mal_id === animeId)) {
+        arrayName = "completed";
+      }
+      const updateResult = await db
+        .collection("WatchList")
+        .updateOne(
+          { _id: userId },
+          { $pull: { [arrayName]: { mal_id: animeId } } }
+        );
+      if (updateResult.modifiedCount === 1) {
+        console.log("Anime deleted from", arrayName);
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 app.get("/getWatchList", verifyToken, async (req, res) => {
   const { ObjectId } = require("mongodb");
   const userId = new ObjectId(req.userId);
@@ -291,7 +343,6 @@ app.get("/watchList", async (req, res) => {
       if (err) throw err;
       let malIds = docs.map((doc) => doc["doc"]["mal_id"]);
       res.send(malIds);
-      // console.log(docs[0]["doc"]);
       db.close();
     });
 });

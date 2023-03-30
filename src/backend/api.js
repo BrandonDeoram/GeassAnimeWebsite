@@ -93,6 +93,23 @@ export const addToWatchList = async (anime, watchList, token) => {
     return error;
   }
 };
+export const deleteAnime = async (anime, token) => {
+  const data = {
+    anime: anime,
+  };
+  try {
+    const response = await api.post("deleteAnime", data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};
 
 export const checkAnimeInList = async (anime) => {
   try {
@@ -117,4 +134,3 @@ export const getWatchList = async (token) => {
     return error;
   }
 };
-
