@@ -7,19 +7,23 @@ import style from "./WatchList.module.css";
 import WatchListCard from "./WatchListCard";
 import { getWatchList } from "../../backend/api";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
 export default function WatchList() {
   const [toWatch, setToWatch] = useState([]);
   const [watching, setWatching] = useState([]);
   const [completed, setCompleted] = useState([]);
+  const counter = useSelector((state) => state.counter.value);
   useEffect(() => {
     let token = localStorage.getItem("token");
+    console.log("COUNTER");
+    console.log(counter);
     getWatchList(token).then((data) => {
       setToWatch(data["toWatch"]);
       setWatching(data["watching"]);
       setCompleted(data["completed"]);
-      console.log("re-run");
     });
-  }, []);
+  }, [counter]);
   return (
     <div>
       <Button
@@ -55,7 +59,6 @@ export default function WatchList() {
               <div>Switch To</div>
             </div>
             {watching.map((anime, id) => {
-           
               return <WatchListCard anime={anime} key={id}></WatchListCard>;
             })}
           </div>
@@ -69,7 +72,6 @@ export default function WatchList() {
               <div>Switch To</div>
             </div>
             {completed.map((anime, id) => {
-          
               return <WatchListCard anime={anime} key={id}></WatchListCard>;
             })}
           </div>

@@ -2,9 +2,11 @@ import React from "react";
 import { Modal, Box, Button } from "@mui/material";
 import styles from "./Carousels.module.css";
 import { addToWatchList } from "../../backend/api";
+import { useDispatch } from "react-redux";
+import { increment } from "../../redux/updateListSlice";
 export default function CustomModal({ open, onClose, anime }) {
+  const dispatch = useDispatch();
   const addToList = (option) => {
-
     const token = localStorage.getItem("token");
     if (option === 1) {
       addToWatchList(anime, "toWatch", token);
@@ -15,6 +17,7 @@ export default function CustomModal({ open, onClose, anime }) {
     } else if (option === 4) {
       // addToWatchList(anime, "completed", token);
     }
+    dispatch(increment());
   };
   return (
     <Modal

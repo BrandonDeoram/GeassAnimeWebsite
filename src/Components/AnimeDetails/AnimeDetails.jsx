@@ -33,7 +33,7 @@ export default function AnimeDetails() {
   }
 
   return (
-    <div className={style.container}>
+    <div className={style.container} >
       <CustomModal open={open} onClose={handleClose} anime={anime} ></CustomModal>
       <IconButton
         sx={{

@@ -266,6 +266,7 @@ app.post("/addtoWatchList", verifyToken, async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
 app.get("/getWatchList", verifyToken, async (req, res) => {
   const { ObjectId } = require("mongodb");
   const userId = new ObjectId(req.userId);
