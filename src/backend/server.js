@@ -279,9 +279,7 @@ app.post("/deleteAnime", verifyToken, async (req, res) => {
     }
     const { anime } = req.body;
     // Check to see if anime is already in any of the WatchList Collection
-    console.log(anime);
     const animeId = anime["mal_id"];
-    console.log(animeId);
     const animeStatus = await db.collection("WatchList").findOne({
       $and: [
         { _id: userId },
@@ -312,6 +310,7 @@ app.post("/deleteAnime", verifyToken, async (req, res) => {
         );
       if (updateResult.modifiedCount === 1) {
         console.log("Anime deleted from", arrayName);
+        res.status(201).json({ success: true });
       }
     }
   } catch (error) {

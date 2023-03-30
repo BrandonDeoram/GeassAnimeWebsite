@@ -19,7 +19,15 @@ export default function CustomModal({ open, onClose, anime }) {
         dispatch(increment())
       );
     } else if (option === 4) {
-      deleteAnime(anime, token).then(() => dispatch(increment()));
+      deleteAnime(anime, token)
+        .then(() => {
+          dispatch(increment());
+          console.log("clicked then");
+        })
+        .catch((error) => {
+          console.error(error);
+          console.log("Error caught in deleteAnime() function");
+        });
     }
   };
   return (
