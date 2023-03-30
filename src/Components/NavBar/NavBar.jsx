@@ -3,6 +3,8 @@ import style from "./NavBar.module.css";
 import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/authSlice";
 export default function NavBar() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,9 +14,13 @@ export default function NavBar() {
     setIsMenuOpen(!isMenuOpen);
   };
   const token = localStorage.getItem("token");
+  const dispatch = useDispatch();
   const handleOptionClick = (option) => {
     if (option === 1) {
       navigate("/watchList");
+    } else if (option === 2) {
+      localStorage.removeItem("token");
+      dispatch(logout());
     }
   };
   useEffect(() => {
