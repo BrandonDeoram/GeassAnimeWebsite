@@ -16,8 +16,6 @@ export default function WatchList() {
   const counter = useSelector((state) => state.counter.value);
   useEffect(() => {
     let token = localStorage.getItem("token");
-    console.log("COUNTER");
-    console.log(counter);
     getWatchList(token).then((data) => {
       setToWatch(data["toWatch"]);
       setWatching(data["watching"]);

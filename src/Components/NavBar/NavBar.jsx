@@ -20,6 +20,7 @@ export default function NavBar() {
       navigate("/watchList");
     } else if (option === 2) {
       localStorage.removeItem("token");
+      navigate("/");
       dispatch(logout());
     }
   };
