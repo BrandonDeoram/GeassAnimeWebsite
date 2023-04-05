@@ -43,7 +43,8 @@
 }
 
 .searchInput {
-  /* background-color: rgb(88, 88, 88); */
+  color: white;
+  background-color: rgba(59, 58, 58, 0.363);
   height: 50px;
   width: 100%;
   font-weight: 400;
@@ -52,6 +53,9 @@
   padding-right: 20px;
   font-size: 16px;
   border: none !important;
+}
+.searchInput:focus {
+  outline: none;
 }
 
 .button {
