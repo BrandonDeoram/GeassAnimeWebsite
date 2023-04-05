@@ -29,7 +29,7 @@ function SearchBar() {
             <form onSubmit={handleSubmit} className={styles.searchContainer}>
                 <input
                     type="text"
-                    placeholder="Search..."
+                    placeholder="Anime Name"
                     value={searchTerm}
                     onChange={handleInputChange}
                     className={styles.searchInput}
