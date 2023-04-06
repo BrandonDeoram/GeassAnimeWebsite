@@ -4,26 +4,13 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import IconButton from "@mui/material/IconButton";
 import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
-import { sendAnime } from "../../backend/api";
 import cardStyles from "../Cards/Cards.module.css";
 import { Link } from "react-router-dom";
-import { Modal, Box, Button } from "@mui/material";
 import CustomModal from "./CustomModal";
-import { addToWatchList } from "../../backend/api";
 export default function CarouselComp({ props }) {
   let animes = props;
   const [open, setOpen] = useState(false);
   const [currentAnime, setCurrentAnime] = useState(null);
-  const addToList = (option) => {
-    console.log(option === 1);
-    if (option) {
-      //send anime to toWatchList
-      console.log(currentAnime);
-      // addToWatchList(currentAnime, "toWatch");
-    } else if (option === 2) {
-    } else if (option === 3) {
-    }
-  };
 
   const handleOpen = () => {
     setOpen(true);
@@ -91,7 +78,6 @@ export default function CarouselComp({ props }) {
                   }}
                   onClick={() => {
                     console.log(anime.mal_id);
-                    // sendAnime(anime);
                     setCurrentAnime(anime);
                     handleOpen(); // Open the modal when the button is clicked
                   }}

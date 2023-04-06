@@ -1,0 +1,8 @@
+.wrapper {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  height: 100vh;
+}

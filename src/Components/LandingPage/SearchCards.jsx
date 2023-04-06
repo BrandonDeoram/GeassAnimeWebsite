@@ -2,9 +2,20 @@ import React from "react";
 import styles from "../LandingPage/LandingPage.module.css";
 import IconButton from "@mui/material/IconButton";
 import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
-import { sendAnime } from "../../backend/api";
 import cardStyle from "../Cards/Cards.module.css";
+import CustomModal from "../Carousels/CustomModal";
+import { useState } from "react";
 export default function SearchCards({ searchResults }) {
+  const [open, setOpen] = useState(false);
+  const [currentAnime, setCurrentAnime] = useState(null);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <div className={styles.searchResContainer}>
       {searchResults.map((anime, id) => (
@@ -23,14 +34,19 @@ export default function SearchCards({ searchResults }) {
               right: "0%",
             }}
             onClick={() => {
-              console.log(anime.mal_id);
-              sendAnime(anime);
+              setCurrentAnime(anime);
+              handleOpen(); // Open the modal when the button is clicked
             }}
           >
             <LibraryAddIcon />
           </IconButton>
         </div>
       ))}
+      <CustomModal
+        open={open}
+        onClose={handleClose}
+        anime={currentAnime}
+      ></CustomModal>
     </div>
   );
 }

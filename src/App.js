@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./Components/Pages/SignUp";
 import { login } from "./redux/authSlice";
 import AnimeDetails from "./Components/AnimeDetails/AnimeDetails";
+import Top from "./Components/Pages/Top";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -38,6 +39,7 @@ function App() {
             <Route exact path="/home" element={<Home />}></Route>
             <Route exact path="/watchlist" element={<WatchList />}></Route>
             <Route exact path="/anime/:animeId" element={<AnimeDetails />} />
+            <Route exact path="/Top" element={<Top />} />
           </Routes>
         </BrowserRouter>
       </div>

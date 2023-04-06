@@ -171,3 +171,11 @@
   background: linear-gradient(to bottom, transparent 0%, black 100%);
   z-index: 0;
 }
+
+.loaderContainer{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
