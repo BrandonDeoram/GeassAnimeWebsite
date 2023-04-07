@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../Pages/Top.module.css";
 export default function AnimePage({ anime }) {
+  // anime component for anime page
   return (
     <div className={styles.container}>
       <div className={styles.middleContainer}>
