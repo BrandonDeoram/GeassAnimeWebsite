@@ -10,6 +10,7 @@ import { login } from "./redux/authSlice";
 import AnimeDetails from "./Components/AnimeDetails/AnimeDetails";
 import Top from "./Components/Pages/Top";
 function App() {
+  // Consists of everything that is needed to render
   const dispatch = useDispatch();
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
