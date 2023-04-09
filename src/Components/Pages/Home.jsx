@@ -4,6 +4,8 @@ import LandingPage from "../LandingPage/LandingPage";
 import TitleWCarousel from "../TitleWCarousel/TitleWCarousel";
 import WrapCarousel from "../Wrappers/WrapCarousel";
 import style from "./Login.module.css";
+import { ReactSVG } from "react-svg";
+import ccImage from "../../svg/cc.svg";
 export default function Home() {
   //Make API calls and populate carousel with the animelist
   const [topAnime, setTopAnime] = useState([]);
@@ -45,7 +47,10 @@ export default function Home() {
           animes={advantAnime}
         ></TitleWCarousel>
       </WrapCarousel>
-      <footer className={style.footerClass}>Copyright to Geass</footer>
+      <footer className={style.footerClass}>
+        Copyright to Geass
+        <ReactSVG src={ccImage} style={{ height: '20px', width: '20px',margin:'10px',  fill: 'white' }} />
+      </footer>
     </>
   );
 }
