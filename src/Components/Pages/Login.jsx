@@ -7,10 +7,6 @@ import { login } from "../../redux/authSlice";
 //rfced
 export default function Login() {
   const navigate = useNavigate();
-  const errors = {
-    uname: "invalid username",
-    pass: "invalid password",
-  };
   const dispatch = useDispatch();
   const handleSubmit = async (event) => {
     event.preventDefault(); // prevent the default form submission behavior
