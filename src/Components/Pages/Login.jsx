@@ -52,7 +52,6 @@ export default function Login() {
                   required
                   className={styles.formInput}
                 />
-                {/* {renderErrorMessage("uname")} */}
               </div>
               <div className={styles.inputContainer}>
                 <label className={styles.passText}>Password </label>
@@ -62,7 +61,6 @@ export default function Login() {
                   required
                   className={styles.formInput}
                 />
-                {/* {renderErrorMessage("pass")} */}
               </div>
               <div className={styles.buttonContainer}>
                 <input type="submit" className={styles.submitButton} />
