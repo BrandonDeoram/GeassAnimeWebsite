@@ -4,7 +4,7 @@ import AnimePage from "../AnimePage/AnimePage";
 import Button from "@mui/material/Button";
 import { ArrowBack } from "@material-ui/icons";
 export default function Top() {
-  //get top anime data
+  //hardocded anime data for top page
   let topAnimeData = [
     {
       title: "Naruto",
