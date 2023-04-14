@@ -23,6 +23,7 @@ function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   useEffect(() => {
+    document.title="Geass List";
     localStorage.setItem("isLoggedIn", isLoggedIn);
   }, [isLoggedIn]);
   return (
