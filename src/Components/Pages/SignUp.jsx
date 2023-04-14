@@ -2,15 +2,11 @@ import React from "react";
 import styles from "./Login.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { login } from "../../redux/authSlice";
-//rfced
+
 export default function SignUp() {
   const navigate = useNavigate();
-  const errors = {
-    uname: "invalid username",
-    pass: "invalid password",
-  };
   const dispath = useDispatch();
   const handleSubmit = async (event) => {
     event.preventDefault();
