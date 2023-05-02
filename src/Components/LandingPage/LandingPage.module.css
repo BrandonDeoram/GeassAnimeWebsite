@@ -64,6 +64,10 @@
   color: white !important;
   border: none;
   margin-left: 10px;
+  cursor: pointer;
+}
+.button:hover {
+  color: var(--bigHeaderColorPink) !important;
 }
 
 .searchButton {
@@ -172,10 +176,9 @@
   z-index: 0;
 }
 
-.loaderContainer{
+.loaderContainer {
   margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }

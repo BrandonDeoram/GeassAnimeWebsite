@@ -84,6 +84,11 @@
     /* background-color: green; */
     flex-shrink: 1;
   }
+  .rowHeader > div {
+    flex: none;
+    /* background-color: green; */
+    padding: 12px;
+  }
 }
 @media (max-width: 600px) {
   .container {

@@ -4,7 +4,9 @@
   margin: 10px !important;
   background-color: #2c2f3d96 !important;
 }
-
+.backButton:hover {
+  background-color: #2c2f3d !important;
+}
 .buttonColor {
   color: #a5965c !important;
 }

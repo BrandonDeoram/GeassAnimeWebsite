@@ -47,7 +47,7 @@ function SearchBar() {
         />
         <button type="submit" className={styles.button}>
           {" "}
-          <AiOutlineSearch className={styles.searchButton}></AiOutlineSearch>
+          <AiOutlineSearch className={styles.searchButton} ></AiOutlineSearch>
         </button>
       </form>
       {isLoading ? (
