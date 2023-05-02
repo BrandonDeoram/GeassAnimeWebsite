@@ -55,7 +55,9 @@ function SearchBar() {
           <BeatLoader color={"#ffff"} loading={isLoading} size={20} />
         </div>
       ) : clicked ? (
-        <SearchCards searchResults={search} />
+        <div>
+          <SearchCards searchResults={search} />
+        </div>
       ) : (
         <Welcome />
       )}

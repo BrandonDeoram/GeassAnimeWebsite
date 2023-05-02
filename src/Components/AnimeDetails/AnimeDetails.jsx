@@ -46,6 +46,9 @@ export default function AnimeDetails() {
           color: "white",
           transform: "scale(1.8)",
           zIndex: "600",
+          ":hover": {
+            color: "#a5965c",
+          }
         }}
         onClick={() => {
           console.log("clicked");

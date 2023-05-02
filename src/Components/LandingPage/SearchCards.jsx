@@ -32,6 +32,9 @@ export default function SearchCards({ searchResults }) {
               zIndex: 200,
               position: "absolute",
               right: "0%",
+              ":hover" : {
+                color: "#a5965c",
+              }
             }}
             onClick={() => {
               setCurrentAnime(anime);

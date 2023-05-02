@@ -75,6 +75,9 @@ export default function CarouselComp({ props }) {
                     zIndex: 200,
                     position: "absolute",
                     right: "0%",
+                    ":hover": {
+                      color: "#a5965c",
+                    }
                   }}
                   onClick={() => {
                     console.log(anime.mal_id);
