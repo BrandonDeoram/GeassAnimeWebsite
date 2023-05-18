@@ -94,6 +94,11 @@
   display: inline-block;
   font-size: 16px;
   margin: 10px;
+  cursor: pointer;
+}
+.submitButton:hover {
+  opacity: 80%;
+  transition:var(--transitionButton)
 }
 .registerButton {
   background-color: #a5965c;
@@ -106,6 +111,11 @@
   display: inline-block;
   font-size: 16px;
   margin: 10px;
+  cursor: pointer;
+}
+.registerButton:hover {
+  opacity: 80%;
+  transition:var(--transitionButton)
 }
 
 .roundContainer {
@@ -133,3 +143,4 @@
   padding: 20px;
 
 }
+

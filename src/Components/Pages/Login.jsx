@@ -63,7 +63,13 @@ export default function Login() {
                 />
               </div>
               <div className={styles.buttonContainer}>
-                <input type="submit" className={styles.submitButton} />
+                <button
+                  type="submit"
+                  className={styles.submitButton}
+                  placeholder="Submit"
+                >
+                  Submit
+                </button>
                 <button
                   className={styles.registerButton}
                   onClick={() => navigate("/register")}

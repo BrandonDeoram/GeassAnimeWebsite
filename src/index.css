@@ -42,6 +42,7 @@ body {
   --bigHeaderColorPink: #a5965c;
   --iconColorPink: #f494e3;
   --secondaryGrey: #2c2f3d96;
+  --transitionButton: 0.2s ease-in-out;
 }
 
 .App {
@@ -70,4 +71,3 @@ code {
   width: 100%;
   height: 100%;
 }
-
