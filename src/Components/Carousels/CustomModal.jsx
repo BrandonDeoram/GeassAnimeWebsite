@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Modal, Box, Button, Select, MenuItem } from "@mui/material";
+import {
+  Modal,
+  Box,
+  Button,
+  Select,
+  MenuItem,
+  InputLabel,
+} from "@mui/material";
 import styles from "./Carousels.module.css";
 import { addToWatchList, deleteAnime } from "../../backend/api";
 import { useDispatch } from "react-redux";
@@ -8,20 +15,24 @@ import { increment } from "../../redux/updateListSlice";
 export default function CustomModal({ open, onClose, anime }) {
   const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState("");
-  
+
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
   const addToList = () => {
     const token = localStorage.getItem("token");
-    
+
     if (selectedOption === "toWatch") {
       addToWatchList(anime, "toWatch", token).then(() => dispatch(increment()));
     } else if (selectedOption === "watching") {
-      addToWatchList(anime, "watching", token).then(() => dispatch(increment()));
+      addToWatchList(anime, "watching", token).then(() =>
+        dispatch(increment())
+      );
     } else if (selectedOption === "completed") {
-      addToWatchList(anime, "completed", token).then(() => dispatch(increment()));
+      addToWatchList(anime, "completed", token).then(() =>
+        dispatch(increment())
+      );
     } else if (selectedOption === "delete") {
       deleteAnime(anime, token)
         .then(() => {
@@ -60,7 +71,7 @@ export default function CustomModal({ open, onClose, anime }) {
     >
       <Box
         sx={{
-          padding: "1rem",
+          padding: "2rem",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -72,8 +83,19 @@ export default function CustomModal({ open, onClose, anime }) {
           <Select
             value={selectedOption}
             onChange={handleOptionChange}
-            sx={{ color: "white" , backgroundColor: "#171921",width: "200px"}}
+            sx={{
+              color: "white",
+              backgroundColor: "#171921",
+              width: "200px",
+              "&:focus": {
+                borderColor: "red", // Change the color to your desired color
+                boxShadow: "0 0 0 2px red", // Optional: Add a box shadow to the border
+              },
+            }}
           >
+            <MenuItem value="" disabled>
+              Select an option
+            </MenuItem>
             <MenuItem value="toWatch">toWatch</MenuItem>
             <MenuItem value="watching">Watching</MenuItem>
             <MenuItem value="completed">Completed</MenuItem>
