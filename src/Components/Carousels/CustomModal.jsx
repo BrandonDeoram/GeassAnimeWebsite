@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   Box,
@@ -62,7 +62,7 @@ export default function CustomModal({ open, onClose, anime }) {
         left: "0",
         right: "0",
         bottom: "0",
-        height: "300px",
+        height: "260px",
         width: "300px",
         pointerEvents: "auto",
         margin: "auto",
@@ -78,7 +78,8 @@ export default function CustomModal({ open, onClose, anime }) {
           justifyContent: "center",
         }}
       >
-        <h3>Add to WatchList</h3>
+        <h3 className = {styles.addTo}>Add to WatchList</h3>
+        <p className = {styles.title}>{anime ? anime.title : ""}</p>
         <div className={styles.columnModal}>
           <Select
             value={selectedOption}
