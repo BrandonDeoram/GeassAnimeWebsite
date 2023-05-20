@@ -83,13 +83,32 @@ export default function CustomModal({ open, onClose, anime }) {
           <Select
             value={selectedOption}
             onChange={handleOptionChange}
+            variant="outlined"
             sx={{
               color: "white",
               backgroundColor: "#171921",
+              border: "1px solid #a5965c",
               width: "200px",
-              "&:focus": {
-                borderColor: "red", // Change the color to your desired color
-                boxShadow: "0 0 0 2px red", // Optional: Add a box shadow to the border
+              "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "none",
+                },
+              "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "none",
+                },
+              "& .MuiOutlinedInput-root.Mui-focused .MuiSelect-root": {
+                backgroundColor: "none",
+              },
+              "& .MuiOutlinedInput-root:hover .MuiSelect-root": {
+                backgroundColor: "none",
+              },
+              "& .MuiSvgIcon-root": {
+                color: "white",
+              },
+              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                border: "none",
+                borderRadius: "none",
               },
             }}
           >
