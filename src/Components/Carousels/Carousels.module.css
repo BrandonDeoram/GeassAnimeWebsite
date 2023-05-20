@@ -41,3 +41,8 @@
   text-align: center;
   font-size: medium;
 }
+
+.closeButton {
+  color: red !important;
+  background-color: red !important;
+}

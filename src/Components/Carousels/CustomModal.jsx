@@ -11,10 +11,44 @@ import styles from "./Carousels.module.css";
 import { addToWatchList, deleteAnime } from "../../backend/api";
 import { useDispatch } from "react-redux";
 import { increment } from "../../redux/updateListSlice";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function CustomModal({ open, onClose, anime }) {
   const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState("");
+
+  const notify = (action) => {
+    if (action != "Deleted") {
+      toast.success(
+        <span>
+          Added to: <span style={{ color: "green" }}>{action}</span>
+        </span>,
+        {
+          className: styles.toast,
+          position: "top-center",
+          icon: true,
+          autoClose: 1000,
+          hideProgressBar: true,
+          draggable: true,
+          progress: false,
+          // Apply the custom class for the closeButton
+          closeButton: false,
+        }
+      );
+    } else {
+      toast.success(<span style={{ color: "red" }}>Deleted Anime </span>, {
+        className: styles.toast,
+        position: "top-center",
+        icon: true,
+        autoClose: 1000,
+        hideProgressBar: true,
+        draggable: true,
+        progress: false,
+        // Apply the custom class for the closeButton
+        closeButton: false,
+      });
+    }
+  };
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -25,14 +59,17 @@ export default function CustomModal({ open, onClose, anime }) {
 
     if (selectedOption === "toWatch") {
       addToWatchList(anime, "toWatch", token).then(() => dispatch(increment()));
+      notify("toWatch");
     } else if (selectedOption === "watching") {
       addToWatchList(anime, "watching", token).then(() =>
         dispatch(increment())
       );
+      notify("Watching");
     } else if (selectedOption === "completed") {
       addToWatchList(anime, "completed", token).then(() =>
         dispatch(increment())
       );
+      notify("Completed");
     } else if (selectedOption === "delete") {
       deleteAnime(anime, token)
         .then(() => {
@@ -43,6 +80,7 @@ export default function CustomModal({ open, onClose, anime }) {
           console.error(error);
           console.log("Error caught in deleteAnime() function");
         });
+      notify("Deleted");
     }
   };
 
@@ -78,8 +116,8 @@ export default function CustomModal({ open, onClose, anime }) {
           justifyContent: "center",
         }}
       >
-        <h3 className = {styles.addTo}>Add to WatchList</h3>
-        <p className = {styles.title}>{anime ? anime.title : ""}</p>
+        <h3 className={styles.addTo}>Add to WatchList</h3>
+        <p className={styles.title}>{anime ? anime.title : ""}</p>
         <div className={styles.columnModal}>
           <Select
             value={selectedOption}
@@ -122,6 +160,7 @@ export default function CustomModal({ open, onClose, anime }) {
             <MenuItem value="delete">Delete</MenuItem>
           </Select>
           <Button onClick={addToList}>Save</Button>
+          <ToastContainer />
         </div>
       </Box>
     </Modal>
