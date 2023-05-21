@@ -69,29 +69,148 @@ function SearchBar() {
         </button>
       </form>
       <div className={styles.filterRow}>
-        <Button className={styles.backButton}>Filter</Button>
-
-        <FormControl className={styles.genreSelect} sx={{ m: 1, width: 100, height: 50 }}>
+        <FormControl
+          className={styles.genreSelect}
+          sx={{
+            mt: 2,
+            width: 100,
+            height: 35,
+            borderRadius: "500px",
+          }}
+        >
           <Select
-            labelId="demo-multiple-checkbox-label"
-            id="demo-multiple-checkbox"
+            sx={{
+              height: "38px",
+              fontSize: ".8rem",
+              color: "white",
+              backgroundColor: "#171921",
+              border: "1px solid #a5965c",
+              width: "100px",
+
+              "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "none",
+                },
+              "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "none",
+                },
+              "& .MuiOutlinedInput-root.Mui-focused .MuiSelect-root": {
+                backgroundColor: "none",
+              },
+              "& .MuiOutlinedInput-root:hover .MuiSelect-root": {
+                backgroundColor: "none",
+              },
+              "& .MuiSvgIcon-root": {
+                color: "white",
+              },
+              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                border: "none",
+              },
+            }}
+            displayEmpty
             multiple
             value={filterGenre}
             onChange={handleChange}
             MenuProps={MenuProps}
-            renderValue={(selected) => selected.join(", ")}
+            renderValue={(selected) => {
+              if (selected.length === 0) {
+                return <em>Genre</em>;
+              }
+
+              return selected.join(", ");
+            }}
+            inputProps={{ "aria-label": "Without label" }}
           >
             <MenuItem disabled value="">
-              <em>Placeholder</em>
+              <em>Genre</em>
             </MenuItem>
             {genres.map((genre, index) => (
               <MenuItem key={index} value={genre["name"]}>
-                <Checkbox checked={filterGenre.indexOf(genre["name"]) > -1} />
+                <Checkbox
+                  checked={filterGenre.indexOf(genre["name"]) > -1}
+                  sx={{
+                    color: "white",
+                    "&.Mui-checked": {
+                      color: "white",
+                    },
+                  }}
+                />
+
                 {genre["name"]}
               </MenuItem>
             ))}
           </Select>
         </FormControl>
+        <FormControl
+          className={styles.genreSelect}
+          sx={{
+            mt: 2,
+            width: 100,
+            height: 35,
+            borderRadius: "500px",
+          }}
+        >
+          <Select
+            sx={{
+              height: "38px",
+              fontSize: ".8rem",
+              color: "white",
+              backgroundColor: "#171921",
+              border: "1px solid #a5965c",
+              width: "100px",
+
+              "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "none",
+                },
+              "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: "none",
+                },
+              "& .MuiOutlinedInput-root.Mui-focused .MuiSelect-root": {
+                backgroundColor: "none",
+              },
+              "& .MuiOutlinedInput-root:hover .MuiSelect-root": {
+                backgroundColor: "none",
+              },
+              "& .MuiSvgIcon-root": {
+                color: "white",
+              },
+              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                border: "none",
+              },
+            }}
+            displayEmpty
+            multiple
+            value={filterGenre}
+            onChange={handleChange}
+            MenuProps={MenuProps}
+            renderValue={(selected) => {
+              if (selected.length === 0) {
+                return <em>Genre</em>;
+              }
+
+              return selected.join(", ");
+            }}
+            inputProps={{ "aria-label": "Without label" }}
+          >
+            <MenuItem disabled value="">
+              <em>Genre</em>
+            </MenuItem>
+            {genres.map((genre, index) => (
+              <MenuItem key={index} value={genre["name"]}>
+                <Checkbox
+                  checked={filterGenre.indexOf(genre["name"]) > -1}
+                  labelStyle={{ color: "white" }}
+                  iconStyle={{ fill: "white" }}
+                />
+                {genre["name"]}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <Button className={styles.backButton}>Filter</Button>
       </div>
       {isLoading ? (
         <div className={styles.loaderContainer}>
@@ -112,8 +231,11 @@ const ITEM_PADDING_TOP = 8;
 const MenuProps = {
   PaperProps: {
     style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      maxHeight: ITEM_HEIGHT * 3.5 + ITEM_PADDING_TOP,
       width: "250px",
+      margin: "20px",
+      backgroundColor: "#171921",
+      color: "white",
     },
   },
 };
