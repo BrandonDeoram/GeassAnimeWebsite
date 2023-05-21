@@ -49,6 +49,7 @@ export default function Home() {
         ></TitleWCarousel>
       </WrapCarousel>
       <TitlesAnimes title="Latest Animes" animes={topAnime}/>
+      
 
       <footer className={style.footerClass}>
         Copyright to Geass
