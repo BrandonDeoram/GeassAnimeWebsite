@@ -22,6 +22,8 @@ function SearchBar() {
   const [clicked, setClicked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [filterGenre, setFilterGenre] = useState([]);
+  const [filterType, setFilterType] = useState([]);
+
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -49,6 +51,15 @@ function SearchBar() {
       target: { value },
     } = event;
     setFilterGenre(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
+  const handleChange2 = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setFilterType(
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
@@ -183,8 +194,8 @@ function SearchBar() {
             }}
             displayEmpty
             multiple
-            value={filterGenre}
-            onChange={handleChange}
+            value={filterType}
+            onChange={handleChange2}
             MenuProps={MenuProps}
             renderValue={(selected) => {
               if (selected.length === 0) {
@@ -198,14 +209,18 @@ function SearchBar() {
             <MenuItem disabled value="">
               <em>Genre</em>
             </MenuItem>
-            {genres.map((genre, index) => (
-              <MenuItem key={index} value={genre["name"]}>
+            {types.map((type, index) => (
+              <MenuItem key={index} value={type}>
                 <Checkbox
-                  checked={filterGenre.indexOf(genre["name"]) > -1}
-                  labelStyle={{ color: "white" }}
-                  iconStyle={{ fill: "white" }}
+                  checked={filterType.indexOf(type) > -1}
+                  sx={{
+                    color: "white",
+                    "&.Mui-checked": {
+                      color: "white",
+                    },
+                  }}
                 />
-                {genre["name"]}
+                {type}
               </MenuItem>
             ))}
           </Select>
@@ -239,6 +254,7 @@ const MenuProps = {
     },
   },
 };
+const types = ["Movie", "TV", "OVA", "ONA", "Special", "Music"];
 const genres = [
   {
     mal_id: 1,
