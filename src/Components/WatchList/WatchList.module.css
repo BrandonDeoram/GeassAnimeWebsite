@@ -21,6 +21,7 @@
   border-radius: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
+  z-index: 1;
 }
 .rowHeader {
   display: flex;
@@ -75,8 +76,12 @@
   border-radius: 10px;
 }
 .titleLink {
+  z-index: 200;
   text-decoration: none;
   color: white;
+}
+.titleLink:hover {
+  color: var(--bigHeaderColorPink);
 }
 
 @media (max-width: 938px) {

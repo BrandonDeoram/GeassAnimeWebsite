@@ -9,7 +9,7 @@
 }
 
 .title {
-  font-size: 32px;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   padding-left: 30px;
   z-index: 50;
   color: var(--bigHeaderColorPink);

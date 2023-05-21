@@ -4,7 +4,6 @@ import CustomModal from "../Carousels/CustomModal";
 //Copied from MUI doc
 
 export default function SwitchMenu({ anime }) {
-
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -16,7 +15,6 @@ export default function SwitchMenu({ anime }) {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
 

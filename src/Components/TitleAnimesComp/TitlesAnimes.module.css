@@ -1,0 +1,24 @@
+section {
+  padding: 2rem;
+  display: flex;
+  margin-top: 1rem;
+  color: var(--bigHeaderColorPink);
+  background-color: rgba(59, 58, 58, 0.226);
+}
+.rowHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.titlesAnimes {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+.backButton {
+  background-color: #2c2f3d96 !important;
+  color: #a5965c !important;
+}
+.backButton:hover {
+  background-color: #2c2f3d !important;
+}
