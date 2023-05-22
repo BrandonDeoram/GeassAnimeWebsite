@@ -49,6 +49,8 @@ export default function Home() {
         ></TitleWCarousel>
       </WrapCarousel>
       <TitlesAnimes title="Latest Animes" animes={topAnime}/>
+      <TitlesAnimes title="New Animes" animes={actionAnime}/>
+
       
 
       <footer className={style.footerClass}>

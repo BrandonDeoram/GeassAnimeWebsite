@@ -7,14 +7,14 @@ import IconButton from "@mui/material/IconButton";
 import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
 import CustomModal from "../Carousels/CustomModal";
 export default function TitlesAnimes({ title, animes }) {
-  const limitedAnimes = animes.slice(0, 16);
+  const limitedAnimes = animes.slice(0, 8);
   const [open, setOpen] = useState(false);
   const [currentAnime, setCurrentAnime] = useState(null);
 
   const handleOpen = () => {
     setOpen(true);
   };
-
+  // Starting to write some comments about this code 
   const handleClose = () => {
     setOpen(false);
   };
@@ -27,14 +27,14 @@ export default function TitlesAnimes({ title, animes }) {
       <div className={styles.grid}>
         {limitedAnimes.map((anime, index) => (
           <div className={styles.card} key={index}>
-            <Link to={`/anime/${anime.mal_id}`}>
+            <Link to={`/anime/${anime.mal_id}`} className={styles.cardImage}>
               <img src={anime["images"]["jpg"]["image_url"]} alt={"loading"} />
               <div className={styles.title}>{anime["title"]}</div>
             </Link>
             <IconButton
               aria-label="delete"
               sx={{
-                width:"50px",
+                width: "50px",
                 color: "white",
                 zIndex: 200,
                 position: "absolute",
