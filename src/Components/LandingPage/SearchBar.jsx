@@ -3,18 +3,10 @@ import styles from "../LandingPage/LandingPage.module.css";
 import { getSearchAnime } from "../../backend/api";
 import { AiOutlineSearch } from "react-icons/ai";
 import SearchCards from "./SearchCards";
-import Welcome from "./Welcome";
 import { BeatLoader } from "react-spinners";
 import Button from "@mui/material/Button";
 import { FormControl } from "@mui/material";
-import {
-  Modal,
-  Box,
-  MenuItem,
-  InputLabel,
-  OutlinedInput,
-  Select,
-} from "@mui/material";
+import { MenuItem, Select } from "@mui/material";
 import { Checkbox } from "@mui/material";
 function SearchBar() {
   const [searchTerm, setSearchTerm] = useState("");
