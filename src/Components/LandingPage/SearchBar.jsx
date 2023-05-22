@@ -199,7 +199,7 @@ function SearchBar() {
             MenuProps={MenuProps}
             renderValue={(selected) => {
               if (selected.length === 0) {
-                return <em>Genre</em>;
+                return <em>Type</em>;
               }
 
               return selected.join(", ");
