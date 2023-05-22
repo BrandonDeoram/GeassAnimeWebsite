@@ -134,3 +134,19 @@ export const getWatchList = async (token) => {
     return error;
   }
 };
+
+export const getFilteredResults = async (genreList, typeList) => {
+  var genreJoined = genreList.join(",");
+  var typeJoined = typeList.join(",");
+  var string = `anime?genre=${genreJoined}&type=${typeJoined}`
+  console.log(string);
+  try {
+    const response = await jikanApi.get(
+      `anime?genres=${genreJoined}&type=${typeJoined}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};

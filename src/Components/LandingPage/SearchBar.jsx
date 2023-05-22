@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../LandingPage/LandingPage.module.css";
-import { getSearchAnime } from "../../backend/api";
+import { getFilteredResults, getSearchAnime } from "../../backend/api";
 import { AiOutlineSearch } from "react-icons/ai";
 import SearchCards from "./SearchCards";
 import { BeatLoader } from "react-spinners";
@@ -57,6 +57,21 @@ function SearchBar() {
     );
   };
 
+  const onFilterClicked = () => {
+    // Call api with query of filters selected
+    const genreIds = filterGenre.map((genreName) => {
+      const genre = genres.find(
+        (g) => g.name.toLowerCase() === genreName.toLowerCase()
+      );
+      return genre ? genre.mal_id : null;
+    });
+    console.log(genreIds);
+    getFilteredResults(genreIds, filterType).then((res) => {
+      console.log(res.data);
+      setSearchResults(res.data);
+      setClicked(true);
+    });
+  };
   return (
     <div className={styles.searchWrapper}>
       <form onSubmit={handleSubmit} className={styles.searchContainer}>
@@ -217,7 +232,9 @@ function SearchBar() {
             ))}
           </Select>
         </FormControl>
-        <Button className={styles.backButton}>Filter</Button>
+        <Button className={styles.backButton} onClick={onFilterClicked}>
+          Filter
+        </Button>
       </div>
       {isLoading ? (
         <div className={styles.loaderContainer}>

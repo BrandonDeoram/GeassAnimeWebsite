@@ -197,7 +197,6 @@
 .filterRow {
   display: flex;
   flex-direction: row;
-  align-items: start;
   gap: 20px;
 }
 .searchWrapper {
