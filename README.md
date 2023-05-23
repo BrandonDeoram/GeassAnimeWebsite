@@ -2,7 +2,7 @@
 MERN STACK (HTML/CSS,React.js, Node.js, MongoDB) | 
 Features:
 - Add Anime to WatchList
-- Filter by
+- Filter by Type , 
 - Delete Anime 
 - MongoDB
 - React
