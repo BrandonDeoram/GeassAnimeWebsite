@@ -12,6 +12,7 @@ export default function CarouselComp({ props }) {
   const [open, setOpen] = useState(false);
   const [currentAnime, setCurrentAnime] = useState(null);
 
+  //Handles the opening of the modal
   const handleOpen = () => {
     setOpen(true);
   };
