@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./TitlesAnimes.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
@@ -10,19 +10,25 @@ export default function TitlesAnimes({ title, animes }) {
   const limitedAnimes = animes.slice(0, 8);
   const [open, setOpen] = useState(false);
   const [currentAnime, setCurrentAnime] = useState(null);
-
+  const [newTitle, setTitle] = useState("");
   const handleOpen = () => {
     setOpen(true);
   };
-  // Starting to write some comments about this code 
+  // Starting to write some comments about this code
   const handleClose = () => {
     setOpen(false);
   };
+  useEffect(() => {
+    setTitle(title.replaceAll(" ", "-").toLowerCase());
+    console.log(newTitle);
+  });
   return (
     <section className={styles.section}>
       <div className={styles.rowHeader}>
         <p className={styles.titlesAnimes}>{title}</p>
-        <Button className={styles.backButton}>View more</Button>
+        <Button className={styles.backButton} href={newTitle}>
+          View more
+        </Button>
       </div>
       <div className={styles.grid}>
         {limitedAnimes.map((anime, index) => (

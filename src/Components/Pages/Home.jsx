@@ -17,7 +17,7 @@ export default function Home() {
   useEffect(() => {
     let isMounted = true;
 
-    // Make API calls and set state only if the component is mounted , set data 
+    // Make API calls and set state only if the component is mounted, set data 
     if (isMounted) {
       getHomeAnimes().then((data) => {
         setTopAnime(data["topAnime"]);

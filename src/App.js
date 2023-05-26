@@ -42,6 +42,8 @@ function App() {
             <Route exact path="/watchlist" element={<WatchList />}></Route>
             <Route exact path="/anime/:animeId" element={<AnimeDetails />} />
             <Route exact path="/Top" element={<Top />} />
+            <Route exact path="/latest-animes" element={<Top />} />
+
           </Routes>
         </BrowserRouter>
       </div>
