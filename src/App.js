@@ -9,6 +9,7 @@ import SignUp from "./Components/Pages/SignUp";
 import { login } from "./redux/authSlice";
 import AnimeDetails from "./Components/AnimeDetails/AnimeDetails";
 import Top from "./Components/Pages/Top";
+import ViewMore from "./Components/TitleAnimesComp/ViewMore";
 function App() {
   // Consists of everything that is needed to render
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   useEffect(() => {
-    document.title="Geass List";
+    document.title = "Geass List";
     localStorage.setItem("isLoggedIn", isLoggedIn);
   }, [isLoggedIn]);
   return (
@@ -42,8 +43,7 @@ function App() {
             <Route exact path="/watchlist" element={<WatchList />}></Route>
             <Route exact path="/anime/:animeId" element={<AnimeDetails />} />
             <Route exact path="/Top" element={<Top />} />
-            <Route exact path="/latest-animes" element={<Top />} />
-
+            <Route path="/latest-animes" element={<ViewMore />} />
           </Routes>
         </BrowserRouter>
       </div>
