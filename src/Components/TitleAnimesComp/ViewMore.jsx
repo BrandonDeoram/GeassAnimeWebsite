@@ -2,11 +2,10 @@ import React from "react";
 import { Button } from "@mui/material";
 import style from "./TitlesAnimes.module.css";
 import { ArrowBack } from "@material-ui/icons";
-import { useLocation } from "react-router-dom";
-export default function ViewMore() {
-  const location = useLocation();
-  console.log(location);
-  const { title, animes } = location.state;
+import { useContext } from "react";
+import TitleAnimeContext from "../../providers/TitleAnimeContext";
+export default function ViewMore(){
+  const { title, animes } = useContext(TitleAnimeContext);
   console.log(title);
   return (
     <div>
@@ -21,7 +20,7 @@ export default function ViewMore() {
         <ArrowBack className={style.buttonColor} />
       </Button>
       <div className={style.container}>
-        <p className={style.titlesAnimes}>Latest Anime</p>
+        <p className={style.titlesAnimes}>{title}</p>
         {title}
         <div className={style.grid}></div>
       </div>

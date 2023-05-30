@@ -2,18 +2,19 @@ import React from "react";
 import styles from "./TitlesAnimes.module.css";
 import { useState, useEffect } from "react";
 import { Button } from "@mui/material";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
 import CustomModal from "../Carousels/CustomModal";
-
+import { useContext } from "react";
+import TitleAnimeContext from "../../providers/TitleAnimeContext";
 export default function TitlesAnimes({ title, animes }) {
   const limitedAnimes = animes.slice(0, 8);
   const [open, setOpen] = useState(false);
   const [currentAnime, setCurrentAnime] = useState(null);
   const [newTitle, setTitle] = useState("");
-  const navigate = useNavigate();
-
+  const { settingTitleAnime, settingAnimes, titleAnime } =
+    useContext(TitleAnimeContext);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -21,13 +22,17 @@ export default function TitlesAnimes({ title, animes }) {
   const handleClose = () => {
     setOpen(false);
   };
-
-
-
   useEffect(() => {
     setTitle(title.replaceAll(" ", "-").toLowerCase());
     console.log(newTitle);
   }, [title]);
+  const handleViewMore = () => {
+    console.log("EXCUTED");
+    console.log(title);
+    settingAnimes(animes);
+    settingTitleAnime(title);
+    console.log(titleAnime);
+  };
 
   return (
     <section className={styles.section}>
