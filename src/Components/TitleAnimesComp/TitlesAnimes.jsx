@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./TitlesAnimes.module.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
@@ -14,14 +14,12 @@ export default function TitlesAnimes({ title, animes }) {
   const limitedAnimes = animes.slice(0, 8);
   const [open, setOpen] = useState(false);
   const [currentAnime, setCurrentAnime] = useState(null);
-  const [newTitle, setTitle] = useState("");
   const { settingTitleAnime, settingAnimes } = useContext(TitleAnimeContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setTitle(title.replaceAll(" ", "-").toLowerCase());
-    console.log(newTitle);
-  }, [title, newTitle]);
+  // useEffect(() => {
+  //   console.log(newTitle);
+  // }, [newTitle]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -32,11 +30,9 @@ export default function TitlesAnimes({ title, animes }) {
   };
 
   const handleViewMore = () => {
-    console.log("EXECUTED");
-    console.log(title);
     settingTitleAnime(title);
     settingAnimes(animes);
-    navigate(`/${newTitle}`); // Navigate to the ViewMore component
+    navigate(`/${title.replaceAll(" ", "-").toLowerCase()}`); // Navigate to the ViewMore component
   };
 
   return (

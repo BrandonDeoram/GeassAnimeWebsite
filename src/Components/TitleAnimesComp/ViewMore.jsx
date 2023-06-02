@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@mui/material";
 import style from "./TitlesAnimes.module.css";
 import { ArrowBack } from "@material-ui/icons";
@@ -7,7 +7,15 @@ import TitleAnimeContext from "../../providers/TitleAnimeContext";
 import { Link } from "react-router-dom";
 export default function ViewMore() {
   const { titleAnime, provAnimes } = useContext(TitleAnimeContext);
-  console.log("PRINTING: ", provAnimes);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    console.log("EXECUTED");
+
+    return () => {
+      console.log("UNMOUNTED");
+    };
+  }, []);
+
   return (
     <div>
       <Button
@@ -35,6 +43,7 @@ export default function ViewMore() {
             </div>
           ))}
         </div>
+        <button onClick={() => window.scrollTo(0, 0)}>go to top</button>
       </div>
     </div>
   );

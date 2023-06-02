@@ -7,8 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  /* overflow-x: hidden; */
+  /* overflow-y: hidden; */
   color: white;
 }
 
@@ -17,6 +17,7 @@ body {
 }
 
 ::-webkit-scrollbar {
+  background:var(--backgroundGrey);
   width: 15px;
 }
 
@@ -48,10 +49,10 @@ body {
 .App {
   background-color: var(--backgroundGrey);
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   width: 100%;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  /* overflow-y: hidden; */
+  /* overflow-x: hidden; */
 }
 
 code {

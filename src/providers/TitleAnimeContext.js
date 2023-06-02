@@ -7,11 +7,9 @@ export function TitleAnimeProvider({ children }) {
   const [provAnimes, setProvAnimes] = useState([]);
 
   const settingTitleAnime = (name) => {
-    console.log("PROVIDER", name);
     setTitleAnime(name);
   };
   const settingAnimes = (animes) => {
-    console.log("PROVIDER", animes);
     setProvAnimes(animes);
   };
   return (
