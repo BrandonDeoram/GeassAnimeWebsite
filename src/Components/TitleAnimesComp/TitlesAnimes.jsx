@@ -8,13 +8,21 @@ import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
 import CustomModal from "../Carousels/CustomModal";
 import { useContext } from "react";
 import TitleAnimeContext from "../../providers/TitleAnimeContext";
+import { useNavigate } from "react-router-dom";
+
 export default function TitlesAnimes({ title, animes }) {
   const limitedAnimes = animes.slice(0, 8);
   const [open, setOpen] = useState(false);
   const [currentAnime, setCurrentAnime] = useState(null);
   const [newTitle, setTitle] = useState("");
-  const { settingTitleAnime, settingAnimes, titleAnime } =
-    useContext(TitleAnimeContext);
+  const { settingTitleAnime, settingAnimes } = useContext(TitleAnimeContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setTitle(title.replaceAll(" ", "-").toLowerCase());
+    console.log(newTitle);
+  }, [title, newTitle]);
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -22,27 +30,20 @@ export default function TitlesAnimes({ title, animes }) {
   const handleClose = () => {
     setOpen(false);
   };
-  useEffect(() => {
-    setTitle(title.replaceAll(" ", "-").toLowerCase());
-    console.log(newTitle);
-  }, [title]);
+
   const handleViewMore = () => {
-    console.log("EXCUTED");
+    console.log("EXECUTED");
     console.log(title);
-    settingAnimes(animes);
     settingTitleAnime(title);
-    console.log(titleAnime);
+    settingAnimes(animes);
+    navigate(`/${newTitle}`); // Navigate to the ViewMore component
   };
 
   return (
     <section className={styles.section}>
       <div className={styles.rowHeader}>
         <p className={styles.titlesAnimes}>{title}</p>
-        <Button
-          className={styles.backButton}
-          href={newTitle}
-          onClick={handleViewMore}
-        >
+        <Button className={styles.backButton} onClick={handleViewMore}>
           View more
         </Button>
       </div>

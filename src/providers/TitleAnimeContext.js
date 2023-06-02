@@ -11,6 +11,7 @@ export function TitleAnimeProvider({ children }) {
     setTitleAnime(name);
   };
   const settingAnimes = (animes) => {
+    console.log("PROVIDER", animes);
     setProvAnimes(animes);
   };
   return (

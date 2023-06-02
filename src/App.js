@@ -11,6 +11,7 @@ import AnimeDetails from "./Components/AnimeDetails/AnimeDetails";
 import Top from "./Components/Pages/Top";
 import ViewMore from "./Components/TitleAnimesComp/ViewMore";
 import { TitleAnimeProvider } from "./providers/TitleAnimeContext";
+
 function App() {
   // Consists of everything that is needed to render
   const dispatch = useDispatch();
