@@ -7,35 +7,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
-  /* overflow-x: hidden; */
-  /* overflow-y: hidden; */
+  overflow-x: hidden;
+  overflow-y: auto;
   color: white;
 }
 
-* {
-  /* border: 1px solid red; */
-}
-
 ::-webkit-scrollbar {
-  background:var(--backgroundGrey);
+  background: var(--backgroundGrey);
   width: 15px;
+  border-radius: 10px; /* Adjust the radius to your preference */
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
+  border-radius: 10px; /* Adjust the radius to your preference */
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: grey;
-  border-radius: 10px;
+  border-radius: 10px; /* Adjust the radius to your preference */
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: grey;
+  background-color: rgba(128, 128, 128, 0.726);
 }
 
 :root {
@@ -51,8 +48,8 @@ body {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  /* overflow-y: hidden; */
-  /* overflow-x: hidden; */
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 code {

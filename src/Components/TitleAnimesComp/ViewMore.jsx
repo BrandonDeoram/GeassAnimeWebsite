@@ -43,7 +43,6 @@ export default function ViewMore() {
             </div>
           ))}
         </div>
-        <button onClick={() => window.scrollTo(0, 0)}>go to top</button>
       </div>
     </div>
   );

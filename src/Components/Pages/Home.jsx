@@ -51,23 +51,7 @@ export default function Home() {
       </WrapCarousel>
       <TitlesAnimes title="Latest Animes" animes={topAnime} />
       <TitlesAnimes title="New Animes" animes={actionAnime} />
-      <button
-        onClick={() => {
-          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-        }}
-        style={{
-          position: "fixed",
-          padding: "1rem 2rem",
-          fontSize: "20px",
-          bottom: "40px",
-          right: "40px",
-          backgroundColor: "#0C9",
-          color: "#fff",
-          textAlign: "center",
-        }}
-      >
-        Scroll to top
-      </button>
+
       <footer className={style.footerClass}>
         Copyright to Geass
         <ReactSVG

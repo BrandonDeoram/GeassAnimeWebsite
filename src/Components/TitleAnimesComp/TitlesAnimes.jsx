@@ -17,9 +17,7 @@ export default function TitlesAnimes({ title, animes }) {
   const { settingTitleAnime, settingAnimes } = useContext(TitleAnimeContext);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   console.log(newTitle);
-  // }, [newTitle]);
+
 
   const handleOpen = () => {
     setOpen(true);
