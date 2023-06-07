@@ -7,6 +7,7 @@ import style from "./Login.module.css";
 import { ReactSVG } from "react-svg";
 import ccImage from "../../svg/cc.svg";
 import TitlesAnimes from "../TitleAnimesComp/TitlesAnimes";
+import AnimeShowCase from "../AnimeCase/AnimeShowCase";
 export default function Home() {
   //Make API calls and populate carousel with the animelist
   const [topAnime, setTopAnime] = useState([]);
@@ -51,6 +52,7 @@ export default function Home() {
       </WrapCarousel>
       <TitlesAnimes title="Latest Animes" animes={topAnime} />
       <TitlesAnimes title="New Animes" animes={actionAnime} />
+      <AnimeShowCase></AnimeShowCase>
 
       <footer className={style.footerClass}>
         Copyright to Geass
