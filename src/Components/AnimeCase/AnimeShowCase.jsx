@@ -3,6 +3,7 @@ import styles from "./AnimeShowCase.module.css";
 import { useNavigate } from "react-router-dom";
 
 export default function AnimeShowCase() {
+  //navigate to routes 
   const nav = useNavigate();
 
   const handleClick = (route) => {
