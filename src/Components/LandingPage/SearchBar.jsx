@@ -171,7 +171,7 @@ function SearchBar() {
         >
           <Select
             sx={{
-              height: "38px",
+              height: "35px",
               fontSize: ".8rem",
               color: "white",
               backgroundColor: "#171921",
@@ -255,7 +255,7 @@ const ITEM_PADDING_TOP = 8;
 const MenuProps = {
   PaperProps: {
     style: {
-      maxHeight: ITEM_HEIGHT * 3.5 + ITEM_PADDING_TOP,
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
       width: "250px",
       margin: "20px",
       backgroundColor: "#171921",

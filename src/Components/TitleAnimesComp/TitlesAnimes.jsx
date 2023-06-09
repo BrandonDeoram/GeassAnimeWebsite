@@ -11,14 +11,11 @@ import TitleAnimeContext from "../../providers/TitleAnimeContext";
 import { useNavigate } from "react-router-dom";
 
 export default function TitlesAnimes({ title, animes }) {
-  const limitedAnimes = animes.slice(0, 8);
+  const limitedAnimes = animes.slice(0, 16);
   const [open, setOpen] = useState(false);
   const [currentAnime, setCurrentAnime] = useState(null);
   const { settingTitleAnime, settingAnimes } = useContext(TitleAnimeContext);
   const navigate = useNavigate();
-
-
-
   const handleOpen = () => {
     setOpen(true);
   };

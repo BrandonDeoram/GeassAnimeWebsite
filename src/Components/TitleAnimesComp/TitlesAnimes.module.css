@@ -54,6 +54,7 @@ img {
   display: flex;
   border-radius: 5px;
   height: 100%;
+  width: 90%;
   position: relative;
 }
 
