@@ -1,6 +1,6 @@
 # Geass Anime Website
 
-Welcome to the Geass Anime Website! This is a full-stack web application built with the MERN stack, combining HTML/CSS for the frontend, React.js for the interactive user interface, Node.js with Express.js for the server-side logic, and MongoDB for the database. This README file will guide you through the features and steps to run the web app successfully.
+This project is a Geass Anime Website built using the MERN stack (HTML/CSS, React.js, Node.js, MongoDB). The website allows users to explore and manage their anime watchlist. It utilizes the Jikan API to fetch anime data.
 
 ## Features
 
