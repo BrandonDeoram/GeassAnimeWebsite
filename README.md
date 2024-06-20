@@ -1,7 +1,9 @@
 # Geass Anime Website
 
 This project is a Geass Anime Website built using the MERN stack (HTML/CSS, React.js, Node.js, MongoDB). The website allows users to explore and manage their anime watchlist. It utilizes the Jikan API to fetch anime data.
-This project was deployed, it is no longer on a domain.
+This project was deployed, it is no longer on a domain. 
+
+Please note: This code is for localhost only as I everything else is in a seperate repo that was deployed.
 
 ## Features
 
